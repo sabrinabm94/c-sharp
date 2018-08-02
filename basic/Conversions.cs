@@ -23,7 +23,7 @@ namespace Conversions
             int mediumNumber = 1300000000; //suporta valores até 32 bits
             long largeNumber = 130000000000; //similar ao inteiro mas com suporte de até 64 bits
             
-            char firstLetter = 's'; //somente aceita aspas simples, não aceita vazio
+            char firstLetter = 's'; //somente aceita aspas simples, não aceita vazio, sempre tem que ter apenas 1 caractere
             Console.WriteLine(firstLetter);
             
             firstLetter = (char)61; //sinal de =
