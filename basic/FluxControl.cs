@@ -10,14 +10,12 @@ namespace FluxControl
             int firstPersonAge = 16;
             int secondPersonAge = 24;
             int quantityOfPeople = 2;
-            bool over18 = secondPersonAge >= 18;
+            bool accompanied = quantityOfPeople > 1;
+            bool over18 = firstPersonAge >= 18;
 
-            if (firstPersonAge >= 18)
+            if((accompanied == true && secondPersonAge >= 18) || over18 == true)
             {
-                Console.WriteLine("Can enter");
-            } else if(quantityOfPeople > 1 && over18 == true)
-            {
-                Console.WriteLine("Can enter because the second person is over 18");
+                Console.WriteLine("Can enter!");
             } else
             {
                 Console.WriteLine("Can't enter");
