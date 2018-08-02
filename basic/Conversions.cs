@@ -32,6 +32,12 @@ namespace Conversions
             string firstText = "The year is " + 2018;
             Console.WriteLine(firstText);
             string secoundText = ""; //string pode ser vazio
+            
+            string oneMoreText = @"
+                - one 
+                - two 
+                - three";
+            Console.WriteLine(oneMoreText);
            
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
