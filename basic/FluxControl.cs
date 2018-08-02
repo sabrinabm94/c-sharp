@@ -1,7 +1,7 @@
 
-namespace FluxControllAndLoops
+namespace FluxControl
 {
-    class FluxControllAndLoops
+    class FluxControl
     {
         static void Main(string[] args)
         {
