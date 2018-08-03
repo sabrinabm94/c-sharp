@@ -11,7 +11,7 @@ namespace InvestmentMoney
             int monthCounter = 1;
 
             /*
-            //com for
+            com for
             for (monthCounter = 1; monthCounter < 12; monthCounter++)
             {
                 if (monthCounter <= 12)
@@ -22,7 +22,11 @@ namespace InvestmentMoney
             }
             */
 
-            //com while
+            /*
+            com while
+            somente inicia a repetição quando uma condição for verdadeira, e não inicia ou finaliza quando for falsa
+            <, >, <=, >=, ==, !=, &&, ||
+            */
             while(monthCounter <= 12) {
                 if (monthCounter <= 12)
                 {
