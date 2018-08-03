@@ -15,13 +15,13 @@ namespace FluxControl
 
             if((accompanied == true && secondPersonAge >= 18) || over18 == true)
             {
-                Console.WriteLine("Can enter!");
+                Console.WriteLine("Can enter.");
             } else
             {
-                Console.WriteLine("Can't enter");
+                Console.WriteLine("Can't enter.");
             }
 
-            Console.WriteLine("Press enter to exit");
+            Console.WriteLine("Press enter to exit.");
             Console.ReadLine();
         }
     }
