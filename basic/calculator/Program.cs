@@ -20,7 +20,7 @@ class Program
         double resultMedianEven = median.calculateMedian(listEven);
         Console.WriteLine("Value of median: " + resultMedianEven);
 
-        String resultClassificationEven = classification.Classification(resultMedianEven);
+        String resultClassificationEven = classification.classification(resultMedianEven);
         Console.WriteLine("Classification: " + resultClassificationEven);
         Console.WriteLine("");
 
@@ -34,7 +34,7 @@ class Program
         double resultMedianOdd = median.calculateMedian(listOdd);
         Console.WriteLine("Value of median: " + resultMedianOdd);
 
-        String resultClassificationOdd = classification.Classification(resultMedianOdd);
+        String resultClassificationOdd = classification.classification(resultMedianOdd);
         Console.WriteLine("Classification: " + resultClassificationOdd);
         Console.WriteLine("");
 
