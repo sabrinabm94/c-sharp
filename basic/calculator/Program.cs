@@ -6,9 +6,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        Average average = new average();
+        Average average = new Average();
         Median median = new Median();
-        classification classification = new classification();
+        Classification classification = new Classification();
 
         //lista com total de 6 posições - par
         double[] listEven = { 1, 2, 3, 4, 5, 6 };
