@@ -1,8 +1,8 @@
 ﻿using System;
 
-public class Mean
+public class Average
 {
-    public double calculateMean(double[] vet)
+    public double calculateAverage(double[] vet)
     {
         double sum = 0;
 

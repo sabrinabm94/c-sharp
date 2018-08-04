@@ -2,27 +2,27 @@
 
 public class Concept
 {
-    public String Classification(double mean)
+    public String Classification(double average)
     {
         String concept = "";
 
-        if (mean >= 9.0)
+        if (average >= 9.0)
         {
             concept = "A";
         }
-        else if (mean >= 7.5 && mean < 9.0)
+        else if (average >= 7.5 && average < 9.0)
         {
             concept = "B";
         }
-        else if (mean >= 6.0 && mean < 7.5)
+        else if (average >= 6.0 && average < 7.5)
         {
             concept = "C";
         }
-        else if (mean >= 4.0 && mean < 6.0)
+        else if (average >= 4.0 && average < 6.0)
         {
             concept = "D";
         }
-        else if (mean < 4.0)
+        else if (average < 4.0)
         {
             concept = "E";
         }
