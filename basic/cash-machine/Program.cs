@@ -10,10 +10,10 @@ class Program
         double[] moneyBill = { 2, 5, 10, 20, 50, 100 }; //lista desorganizada
 
         CashMachine cashMachine = new CashMachine();
-        cashMachine.sortMoneyBill(moneyBill);
-        cashMachine.bankDraft(moneyBill, 150); //testando notas de maior valor
-        cashMachine.bankDraft(moneyBill, 12.5); //testando decimais
-        cashMachine.bankDraft(moneyBill, 1); //testando BankDraft impossível
+        cashMachine.SortMoneyBill(moneyBill);
+        cashMachine.MoneyDraft(moneyBill, 150); //testando notas de maior valor
+        cashMachine.MoneyDraft(moneyBill, 12.5); //testando decimais
+        cashMachine.MoneyDraft(moneyBill, 1); //testando MoneyDraft impossível
 
         Console.WriteLine("Press enter to exit...");
         Console.ReadLine();

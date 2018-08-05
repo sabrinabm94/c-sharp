@@ -2,7 +2,7 @@
 
 public class Concept
 {
-    public String classification(double average)
+    public String Classification(double average)
     {
         String concept = "";
 

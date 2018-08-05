@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Median
 {
-    public double calculateMedian(double[] vet)
+    public double CalculateMedian(double[] vet)
     {
         int left = 0;
         int right = vet.Length;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class cashMachine
 {
-    public void sortMoneyBill(double[] moneyBill)
+    public void SortMoneyBill(double[] moneyBill)
     {
         int i, j;
         double helper;
@@ -22,30 +22,30 @@ public class cashMachine
         }
     }
 
-    public void bankDraft(double[] moneyBill, double value)
+    public void MoneyDraft(double[] moneyBill, double value)
     {
         int[] moneyBillQuantity = new int[10];
-        double valueBankDraft = value;
+        double valueMoneyDraft = value;
         double remainder = 0;
 
         Console.WriteLine("");
-        Console.WriteLine("BankDraft with the value: " + valueBankDraft);
+        Console.WriteLine("Money draft with the value: " + valueMoneyDraft);
 
         for (var i = 0; i < moneyBill.Length; i++)
         {
             if (value == moneyBill[i])
-            { //se o value do BankDraft for igual ao value da nota
+            { //se o valor do saque for igual ao value da nota
                 moneyBillQuantity[i] += 1;
                 value -= moneyBill[i];
             }
             else if (value >= moneyBill[i])
-            { //se o value do saque for maior ou igual o da nota, adiciona essa nota para ser sacada
+            { //se o valor do saque for maior ou igual o da nota, adiciona essa nota para ser sacada
                 moneyBillQuantity[i] += 1;
                 value -= moneyBill[i];
             }
         }
 
-        if (valueBankDraft - value != 0)
+        if (valueMoneyDraft - value != 0)
         {
             remainder = value;
             for (var j = 0; j < moneyBill.Length; j++)

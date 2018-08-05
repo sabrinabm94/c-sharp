@@ -2,7 +2,7 @@
 
 public class Average
 {
-    public double calculateAverage(double[] vet)
+    public double CalculateAverage(double[] vet)
     {
         double sum = 0;
 

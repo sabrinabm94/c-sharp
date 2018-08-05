@@ -16,11 +16,15 @@ namespace Bank
             account.accountNumber = 123456;
             account.accountBalance = 100;
 
-            Console.WriteLine(account.accountHolder);
-            Console.WriteLine(account.agencyNumber);
-            Console.WriteLine(account.accountNumber);
-            Console.WriteLine(account.accountBalance);
+            Console.WriteLine("Account holder: " + account.accountHolder);
+            Console.WriteLine("Agency number: "+ account.agencyNumber);
+            Console.WriteLine("Account number: " + account.accountNumber);
+            Console.WriteLine("Account balance: " + account.accountBalance);
 
+            account.MoneyDraft(50);
+            Console.WriteLine("Account balance: " + account.accountBalance);
+
+            Console.WriteLine("Press enter to exit...");
             Console.ReadLine();
 
         }
