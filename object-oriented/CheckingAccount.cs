@@ -1,21 +1,40 @@
 ﻿using System;
 
-public class CheckingAccount //uma classe define a estrutura que os objetos desta classe devem seguir
+public class CheckingAccount
+//uma classe define a estrutura que os objetos desta classe devem seguir
+//método não tem nenhum parâmetro, deve começar sempre com letra maiúscula e não tem retorno, define uma maneira de fazer algo
 {
-    public string accountHolder;
-    public int agencyNumber;
-    public int accountNumber;
-    public double accountBalance;
+    public string holder;
+    public int account;
+    public int agency;
+    public double balance;
 
-    public Boolean MoneyDraft(double value)
+    public Boolean Draft(double value)
     {
-        if(this.accountBalance > value)
+        if(this.balance > value)
         {
-            this.accountBalance -= value;
+            this.balance -= value;
             return true;
         } else
         {
             return false;
+        }
+    }
+    public void Deposit(double value) 
+    {
+        this.balance += value;
+    }
+
+    public Boolean Transfer(double value, CheckingAccount targetAccount)
+    {
+        if(this.balance < value)
+        {
+            return false;
+        } else
+        {
+            this.balance -= value;
+            targetAccount.Deposit(value);
+            return true;
         }
     }
 }
