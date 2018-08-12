@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace Bank
 {
-    class Program
+    public class Program
     {
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            Client Sabrina = new Client();
             CheckingAccount account = new CheckingAccount();
-            account.holder = "Sabrina";
+            Sabrina.name = "Sabrina";
             account.agency = 1;
             account.account = 123456;
             account.balance = 100;
 
-            Console.WriteLine("Account holder: " + account.holder);
+            Console.WriteLine("Account holder: " + Sabrina.name);
             Console.WriteLine("Agency number: "+ account.agency);
             Console.WriteLine("Account number: " + account.account);
             Console.WriteLine("Account balance: " + account.balance);
@@ -27,8 +28,9 @@ namespace Bank
             account.Deposit(1);
             Console.WriteLine("Account balance: " + account.balance);
 
+            Client Alexander = new Client();
             CheckingAccount targetAccount = new CheckingAccount();
-            targetAccount.holder = "Alexander";
+            Alexander.name = "Alexander";
             bool transferResult = account.Transfer(1, targetAccount);
             Console.WriteLine("The result of the money transfer is: " + transferResult);
             Console.WriteLine("Target account balance: " + targetAccount.balance);
