@@ -66,13 +66,19 @@ namespace Treinamento
                     }
 
                     /*
-                     Caso 1: 
+                     Caso 1
                      5 - 3 - 6 - 2 - 3 = 1
                      4 - 3 - 4 - 2 - 3 = 16
                      1 - 0 - 2 - 0 - 0 = 3
+                     Deve remover 3 de todo o array
+                     Deve ver a altura maxima para poder remover 3
 
-                     deve remover 3 de todo o array
-                     deve ver a altura maxima para poder remover 3
+                     Caso 2
+                     6 - 8 - 10 - 11 - 12 - 15 - 16 = 78
+                     6 - 8 - 8,8 - 8,8 - 8,8 - 8,8 - 8,8 = 58
+                     0 - 0 - 1,2 - 2,2 - 3,2 - 6,2 - 7,2 = 20
+                     Deve remover 20 de todo o array
+                     deve ter altura maxima 8,8 para remover 20
                     */
                 }
             }
