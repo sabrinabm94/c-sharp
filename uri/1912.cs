@@ -1,4 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Treinamento
 {
@@ -6,14 +10,15 @@ namespace Treinamento
     {
         static void Main(string[] args)
         {
+            double somaAreaTotal = 0; //soma da área que deve ser igual a A
+
             string primeiraLinha = Console.ReadLine();
             string[] entrada1 = primeiraLinha.Split(' ');
             int N = Convert.ToInt32(entrada1[0]); //quantidade de tiras
             double A = Convert.ToInt32(entrada1[1]); //soma das áreas da tiras deve ser igual a A
             double comprimentoTira = 0;
-            double somaAreaTotal = 0; //soma da área que deve ser igual a A
 
-            if (N != 0 || A != 0)
+            if(N != 0 || A != 0)
             {
                 double[] vetorAreaBarras = new double[N];
                 string segundaLinha = Console.ReadLine();
@@ -41,10 +46,12 @@ namespace Treinamento
                 else if (somaAreaTotal < A)
                 {
                     Console.WriteLine("-.-\n"); //área total menor que a área corte
-                }
-                else if(somaAreaTotal > A)
-                {
-                    double alturaCorte = (alturaMaxima + alturaMinima) / 2.0;
+                } else if(somaAreaTotal > A)
+                {                  
+                    //média do corte
+                    double alturaCorte = (alturaMaxima + alturaMinima) / 2;
+                    
+                    //resto do corte
                     double restoCorte = 0;
                     double somaAreaTotalNova = 0;
 
@@ -61,24 +68,17 @@ namespace Treinamento
 
                     if(somaAreaTotalNova == somaAreaTotal - A)
                     {
-                        var result = String.Format("{0:N4}", alturaCorte);
-                        Console.WriteLine(result);
+
+                        Console.WriteLine(alturaCorte + ".0000");
                     }
 
                     /*
-                     Caso 1
                      5 - 3 - 6 - 2 - 3 = 1
                      4 - 3 - 4 - 2 - 3 = 16
                      1 - 0 - 2 - 0 - 0 = 3
-                     Deve remover 3 de todo o array
-                     Deve ver a altura maxima para poder remover 3
 
-                     Caso 2
-                     6 - 8 - 10 - 11 - 12 - 15 - 16 = 78
-                     6 - 8 - 8,8 - 8,8 - 8,8 - 8,8 - 8,8 = 58
-                     0 - 0 - 1,2 - 2,2 - 3,2 - 6,2 - 7,2 = 20
-                     Deve remover 20 de todo o array
-                     deve ter altura maxima 8,8 para remover 20
+                     deve remover 3 de todo o array
+                     deve ver a altura maxima para poder remover 3
                     */
                 }
             }
