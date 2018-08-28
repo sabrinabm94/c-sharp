@@ -6,15 +6,14 @@ namespace Treinamento
     {
         static void Main(string[] args)
         {
-            double somaAreaTotal = 0; //soma da área que deve ser igual a A
-
             string primeiraLinha = Console.ReadLine();
             string[] entrada1 = primeiraLinha.Split(' ');
             int N = Convert.ToInt32(entrada1[0]); //quantidade de tiras
             double A = Convert.ToInt32(entrada1[1]); //soma das áreas da tiras deve ser igual a A
             double comprimentoTira = 0;
+            double somaAreaTotal = 0; //soma da área que deve ser igual a A
 
-            if(N != 0 || A != 0)
+            if (N != 0 || A != 0)
             {
                 double[] vetorAreaBarras = new double[N];
                 string segundaLinha = Console.ReadLine();
@@ -42,12 +41,10 @@ namespace Treinamento
                 else if (somaAreaTotal < A)
                 {
                     Console.WriteLine("-.-\n"); //área total menor que a área corte
-                } else if(somaAreaTotal > A)
-                {                  
-                    //média do corte
+                }
+                else if(somaAreaTotal > A)
+                {
                     double alturaCorte = (alturaMaxima + alturaMinima) / 2.0;
-
-                    //resto do corte
                     double restoCorte = 0;
                     double somaAreaTotalNova = 0;
 
@@ -64,8 +61,8 @@ namespace Treinamento
 
                     if(somaAreaTotalNova == somaAreaTotal - A)
                     {
-
-                        Console.WriteLine(alturaCorte);
+                        var result = String.Format("{0:N4}", alturaCorte);
+                        Console.WriteLine(result);
                     }
 
                     /*
