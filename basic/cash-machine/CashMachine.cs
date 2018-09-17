@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class cashMachine
+public class CashMachine
 {
-    public void SortMoneyBill(double[] moneyBill)
+    public void SortMoneyBill(double[] moneyBill) //ordena as notas para descrescente
     {
         int i, j;
         double helper;
@@ -31,6 +31,8 @@ public class cashMachine
         Console.WriteLine("");
         Console.WriteLine("Money draft with the value: " + valueMoneyDraft);
 
+        //se o valor da retirada for impar, tenta tirar o 5 primeiro
+
         for (var i = 0; i < moneyBill.Length; i++)
         {
             if (value == moneyBill[i])
@@ -40,8 +42,19 @@ public class cashMachine
             }
             else if (value >= moneyBill[i])
             { //se o valor do saque for maior ou igual o da nota, adiciona essa nota para ser sacada
-                moneyBillQuantity[i] += 1;
-                value -= moneyBill[i];
+                if (valueMoneyDraft / 2 != 0 && valueMoneyDraft < 5)
+                {
+                    Console.Write("Impar");
+                    Console.Write(moneyBillQuantity[5]);
+                    moneyBillQuantity[i] += 1;
+                    value -= 5;
+                }
+                else
+                {
+                    moneyBillQuantity[i] += 1;
+                    value -= moneyBill[i];
+                }
+
             }
         }
 
@@ -65,6 +78,11 @@ public class cashMachine
         else
         {
             remainder = value;
+        }
+
+        if (remainder > 0)
+        {
+            Console.WriteLine("Não há notas disponíveis para retirar o valor inserido");
         }
 
         for (var i = 0; i < moneyBill.Length; i++)
