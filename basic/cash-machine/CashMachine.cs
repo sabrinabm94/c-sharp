@@ -28,10 +28,10 @@ public class CashMachine
         double valueMoneyDraft = value;
         double remainder = 0;
 
+        Console.WriteLine("-------------------");
         Console.WriteLine("");
         Console.WriteLine("Money draft with the value: " + valueMoneyDraft);
-
-        //se o valor da retirada for impar, tenta tirar o 5 primeiro
+        Console.WriteLine("");
 
         for (var i = 0; i < moneyBill.Length; i++)
         {
@@ -42,12 +42,10 @@ public class CashMachine
             }
             else if (value >= moneyBill[i])
             { //se o valor do saque for maior ou igual o da nota, adiciona essa nota para ser sacada
-                if (valueMoneyDraft / 2 != 0 && valueMoneyDraft < 5)
-                {
-                    Console.Write("Impar");
-                    Console.Write(moneyBillQuantity[5]);
-                    moneyBillQuantity[i] += 1;
-                    value -= 5;
+                if (valueMoneyDraft / 2 != 0 && value == 6)
+                { //se o valor da retirada for impar, tenta tirar o 5 primeiro
+                    moneyBillQuantity[5] += 1;
+                    value -= moneyBill[5];
                 }
                 else
                 {
@@ -80,17 +78,20 @@ public class CashMachine
             remainder = value;
         }
 
-        if (remainder > 0)
-        {
-            Console.WriteLine("Não há notas disponíveis para retirar o valor inserido");
-        }
-
         for (var i = 0; i < moneyBill.Length; i++)
         {
             Console.WriteLine("Money bill: " + moneyBill[i]);
             Console.WriteLine("Quantity of money bill: " + moneyBillQuantity[i]);
             Console.WriteLine("");
         }
-        Console.WriteLine("Remainder: " + remainder);
+        //Console.WriteLine("Remainder: " + remainder);
+        if (remainder != 0)
+        {
+            Console.WriteLine("Invalid value for the remainder: : " + remainder);
+        } else
+        {
+            Console.WriteLine("All value was removed.");
+        }
+        Console.WriteLine("");
     }
 }

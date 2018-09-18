@@ -11,9 +11,9 @@ class Program
 
         CashMachine cashMachine = new CashMachine();
         cashMachine.SortMoneyBill(moneyBill);
-        cashMachine.MoneyDraft(moneyBill, 150); //testando notas de maior valor
-        cashMachine.MoneyDraft(moneyBill, 12.5); //testando decimais
-        cashMachine.MoneyDraft(moneyBill, 1); //testando MoneyDraft impossível
+        cashMachine.MoneyDraft(moneyBill, 11); //testando notas de maior valor
+        cashMachine.MoneyDraft(moneyBill, 11.5); //testando decimais
+        cashMachine.MoneyDraft(moneyBill, 6); //testando MoneyDraft impossível
 
         Console.WriteLine("Press enter to exit...");
         Console.ReadLine();
