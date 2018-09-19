@@ -96,7 +96,7 @@ namespace WebApplication1.Controllers
         }
 
 
-        public void setAccountInfo(Account account)
+        public void setAccountInfo(AccountController account)
         {
             account.Draft(value);
         }
