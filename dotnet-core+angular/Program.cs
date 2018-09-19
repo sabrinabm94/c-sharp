@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace WEB_ANGULAR_MVC_PROJECT
+namespace WebApplication1
 {
     public class Program
     {

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WEB_ANGULAR_MVC_PROJECT
+namespace WebApplication1
 {
     public class Startup
     {
@@ -20,6 +20,18 @@ namespace WEB_ANGULAR_MVC_PROJECT
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            /*services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<IdentityUser>() .AddEntityFrameworkStores<ApplicationDbContext>();
+            */
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
@@ -50,6 +62,7 @@ namespace WEB_ANGULAR_MVC_PROJECT
             {
                 routes.MapRoute(
                     name: "default",
+                    //name: "CashMachine",
                     template: "{controller}/{action=Index}/{id?}");
             });
 

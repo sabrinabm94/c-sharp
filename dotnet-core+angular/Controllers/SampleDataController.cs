@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WEB_ANGULAR_MVC_PROJECT.Controllers
+namespace WebApplication1.Controllers
 {
     [Route("api/[controller]")]
     public class SampleDataController : Controller

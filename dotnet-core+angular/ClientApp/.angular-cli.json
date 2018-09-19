@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "WEB_ANGULAR_MVC_PROJECT"
+    "name": "WebApplication1"
   },
   "apps": [
     {

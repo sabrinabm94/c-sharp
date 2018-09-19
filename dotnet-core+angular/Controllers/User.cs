@@ -1,11 +1,20 @@
 ﻿public class User
 {
+    public int id;
     public string name;
     public string username;
     public string password;
     public int cpf;
-    public int account;
+    public int accountId;
 
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+    public int getId()
+    {
+        return this.id;
+    }
     public void setName(string name)
     {
         this.name = name;
@@ -42,12 +51,12 @@
         return this.cpf;
     }
 
-    public void setAccount(int account)
+    public void setAccountId(int accountId)
     {
-        this.account = account;
+        this.accountId = accountId;
     }
-    public int getAccount()
+    public int getAccountId()
     {
-        return this.account;
+        return this.accountId;
     }
 }
