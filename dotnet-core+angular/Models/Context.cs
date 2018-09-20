@@ -5,8 +5,8 @@ namespace WebApplication1.Model
 {
     public class Context : DbContext
     {
-        public DbSet<User> Users { get; set; }
-        public DbSet<Account> Accounts { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Account> Account { get; set; }
 
         public Context(DbContextOptions<Context> options):base(options)
         {

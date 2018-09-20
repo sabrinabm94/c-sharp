@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
@@ -12,66 +12,72 @@ namespace WebApplication1
     {
         private IConfiguration _configuration;
 
+        //pega as configurações do banco
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsetting.json", optional: true, reloadOnChange: true)
-                .AddJsonFile("config.json", optional: true, reloadOnChange: true);
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+               //.AddJsonFile("config.json", optional: true, reloadOnChange: true);
 
             _configuration = builder.Build();
-        }
-
-        //criar os modelos no banco
-        public void ConfigureServices(IServiceCollection services)
-        {
-            var sqlConnection = _configuration.GetConnectionString("database");
-            services.AddDbContext<Context>(options => 
-            options.UseMySql(sqlConnection, b => b.MigrationsAssembly("WebApplication1")));
-
-            services.AddMvc();
         }
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-        
+
         public IConfiguration Configuration { get; }
-        
-        /*// This method gets called by the runtime. Use this method to add services to the container.
+
+        //faz a conexão com o banco
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
-        }*/
+            var sqlConnection = _configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<Context>(options =>
+            options.UseMySql(sqlConnection, b => b.MigrationsAssembly("WebApplication1")));
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+
+
+            // In production, the Angular files will be served from this directory
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "ClientApp/dist";
+            });
+        }
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                {
-                    HotModuleReplacement = true
-                });
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSpaStaticFiles();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller}/{action=Index}/{id?}");
+            });
 
-                routes.MapSpaFallbackRoute(
-                    name: "spa-fallback",
-                    defaults: new { controller = "Home", action = "Index" });
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
             });
         }
     }

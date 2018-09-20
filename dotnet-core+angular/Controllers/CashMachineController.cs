@@ -1,10 +1,109 @@
 ﻿using System;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using WebApplication1.Model;
+using WebApplication1.Repository;
 
 namespace WebApplication1.Controllers
 {
-    public class CashMachine
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CashMachine : ControllerBase
     {
-        public double value = 0;
+        /*
+        retorno de informações Rotas 
+        https://localhost:44305/api/CashMachine/getAccount/1
+        */
+
+        private IRepositoryUser<User> repositoryUser;
+        private IRepositoryAccount<Account> repositoryAccount;
+        public CashMachine(IRepositoryUser<User> repositoryUserConnection, IRepositoryAccount<Account> repositoryAccountConnection)
+        {
+            repositoryUser = repositoryUserConnection;
+            repositoryAccount = repositoryAccountConnection;
+        }
+
+        [HttpGet("getAccount/{id}")]
+        public Account GetAccountInfo(int accountId)
+        {
+            Account account = SearchAccountById(accountId);
+            return account;
+        }
+
+        [HttpGet("getAccountBalance/{id}")]
+        public double GetAccountBalance(int accountId)
+        {
+            Account account = SearchAccountById(accountId);
+            return account.balance;
+        }
+
+        [HttpGet("getUser/{id}")]
+        public User GetUserInfo(int userId)
+        {
+            User user = SearchUserById(userId);
+            return user;
+        }
+
+        //retorno de informações Lógica
+        public Account SearchAccountById(int accountId)
+        {
+            Account account = repositoryUser.FindAccountById(accountId);
+            return account;
+        }
+
+        public User SearchUserById(int userId)
+        {
+            User user = repositoryAccount.FindUserById(userId);
+            return user;
+        }
+
+        //recebimento de informações rota
+        [HttpPost("draft/{value}")]
+        public double Draft(int accountId, double value)
+        {
+            Model.Account account = SearchAccountById(accountId);
+
+            double[] moneyBill = { 2, 5, 10, 20, 50, 100 };
+            SortMoneyBill(moneyBill);
+
+            double balance = MoneyDraft(moneyBill, value);
+            account.balance = balance;
+
+            return balance;
+        }
+
+        [HttpPost("deposit/{value}")]
+        public double Deposit(int accountId, double value)
+        {
+            Model.Account account = SearchAccountById(accountId);
+
+            double balance = account.balance;
+            balance += value;
+            account.balance = balance;
+
+            return balance;
+        }
+
+        private void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost("transfer/{value}")]
+        public double Transfer(int accountTargetId, double value)
+        {
+            Model.Account accountTarget = SearchAccountById(accountTargetId);
+            double balance = accountTarget.balance;
+
+            if (balance >= value)
+            {
+                balance -= value;
+                accountTarget.balance = balance;
+            }
+
+            return balance;
+        }
 
         public void SortMoneyBill(double[] moneyBill) //ordena as notas para descrescente
         {
@@ -24,16 +123,11 @@ namespace WebApplication1.Controllers
             }
         }
 
-        public void MoneyDraft(double[] moneyBill, double value)
+        public double MoneyDraft(double[] moneyBill, double value)
         {
             int[] moneyBillQuantity = new int[10];
             double valueMoneyDraft = value;
             double remainder = 0;
-
-            Console.WriteLine("-------------------");
-            Console.WriteLine("");
-            Console.WriteLine("Money draft with the value: " + valueMoneyDraft);
-            Console.WriteLine("");
 
             for (var i = 0; i < moneyBill.Length; i++)
             {
@@ -75,32 +169,19 @@ namespace WebApplication1.Controllers
                 remainder = value;
             }
 
-            for (var i = 0; i < moneyBill.Length; i++)
-            {
-                Console.WriteLine("Money bill: " + moneyBill[i]);
-                Console.WriteLine("Quantity of money bill: " + moneyBillQuantity[i]);
-                Console.WriteLine("");
-            }
-
             if (remainder != 0)
             {
-                Console.WriteLine("Invalid value for the remainder: " + remainder);
                 value = valueMoneyDraft - remainder;
             }
             else
             {
-                Console.WriteLine("All value was removed.");
                 value = valueMoneyDraft;
             }
-            Console.WriteLine("");
-        }
 
-
-        public void setAccountInfo(AccountController account)
-        {
-            account.Draft(value);
+            return value;
         }
     }
 }
+
 
 
