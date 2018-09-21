@@ -1,5 +1,0 @@
-﻿{
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=127.0.0.1,3306;Initial Catalog=database;Persist Security Info=False;User ID=root;Password=;Connection Timeout=30;"
-  }
-}

@@ -1,0 +1,14 @@
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\bin\Debug\netcoreapp2.1\api-rest.deps.json
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\bin\Debug\netcoreapp2.1\api-rest.runtimeconfig.json
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\bin\Debug\netcoreapp2.1\api-rest.runtimeconfig.dev.json
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\bin\Debug\netcoreapp2.1\api-rest.dll
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\bin\Debug\netcoreapp2.1\api-rest.pdb
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\obj\Debug\netcoreapp2.1\api-rest.csprojAssemblyReference.cache
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\obj\Debug\netcoreapp2.1\api-rest.csproj.CoreCompileInputs.cache
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\obj\Debug\netcoreapp2.1\api-rest.RazorAssemblyInfo.cache
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\obj\Debug\netcoreapp2.1\api-rest.RazorAssemblyInfo.cs
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\obj\Debug\netcoreapp2.1\api-rest.AssemblyInfoInputs.cache
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\obj\Debug\netcoreapp2.1\api-rest.AssemblyInfo.cs
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\obj\Debug\netcoreapp2.1\api-rest.RazorTargetAssemblyInfo.cache
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\obj\Debug\netcoreapp2.1\api-rest.dll
+C:\Users\sabrina.moreira\source\repos\api-rest\api-rest\obj\Debug\netcoreapp2.1\api-rest.pdb
