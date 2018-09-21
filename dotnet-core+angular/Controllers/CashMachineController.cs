@@ -1,108 +1,90 @@
 ﻿using System;
-using System.Diagnostics;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Model;
 using WebApplication1.Repository;
 
 namespace WebApplication1.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CashMachine : ControllerBase
+    [Route("api/[Controller]")]
+    public class CashMachineController : Controller
     {
-        /*
-        retorno de informações Rotas 
-        https://localhost:44305/api/CashMachine/getAccount/1
-        */
+        //injeção de dependências pelas interfaces
+        private readonly IUserRepository _userRepository;
+        private readonly IAccountRepository _accountRepository;
 
-        private IRepositoryUser<User> repositoryUser;
-        private IRepositoryAccount<Account> repositoryAccount;
-        public CashMachine(IRepositoryUser<User> repositoryUserConnection, IRepositoryAccount<Account> repositoryAccountConnection)
+        public CashMachineController(IUserRepository userRepository, IAccountRepository accountRepository)
         {
-            repositoryUser = repositoryUserConnection;
-            repositoryAccount = repositoryAccountConnection;
+            _userRepository = userRepository;
+            _accountRepository = accountRepository;
         }
 
-        [HttpGet("getAccount/{id}")]
-        public Account GetAccountInfo(int accountId)
+        [HttpGet("draft/value={value:int}&id={id:int}")]
+        public IActionResult Draft(double value, int id)
         {
-            Account account = SearchAccountById(accountId);
-            return account;
-        }
-
-        [HttpGet("getAccountBalance/{id}")]
-        public double GetAccountBalance(int accountId)
-        {
-            Account account = SearchAccountById(accountId);
-            return account.balance;
-        }
-
-        [HttpGet("getUser/{id}")]
-        public User GetUserInfo(int userId)
-        {
-            User user = SearchUserById(userId);
-            return user;
-        }
-
-        //retorno de informações Lógica
-        public Account SearchAccountById(int accountId)
-        {
-            Account account = repositoryUser.FindAccountById(accountId);
-            return account;
-        }
-
-        public User SearchUserById(int userId)
-        {
-            User user = repositoryAccount.FindUserById(userId);
-            return user;
-        }
-
-        //recebimento de informações rota
-        [HttpPost("draft/{value}")]
-        public double Draft(int accountId, double value)
-        {
-            Model.Account account = SearchAccountById(accountId);
-
-            double[] moneyBill = { 2, 5, 10, 20, 50, 100 };
-            SortMoneyBill(moneyBill);
-
-            double balance = MoneyDraft(moneyBill, value);
-            account.balance = balance;
-
-            return balance;
-        }
-
-        [HttpPost("deposit/{value}")]
-        public double Deposit(int accountId, double value)
-        {
-            Model.Account account = SearchAccountById(accountId);
-
-            double balance = account.balance;
-            balance += value;
-            account.balance = balance;
-
-            return balance;
-        }
-
-        private void SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpPost("transfer/{value}")]
-        public double Transfer(int accountTargetId, double value)
-        {
-            Model.Account accountTarget = SearchAccountById(accountTargetId);
-            double balance = accountTarget.balance;
-
-            if (balance >= value)
+            try
             {
-                balance -= value;
-                accountTarget.balance = balance;
-            }
+                var account = _accountRepository.getById(id);
 
-            return balance;
+                double[] moneyBill = { 2, 5, 10, 20, 50, 100 };
+                SortMoneyBill(moneyBill);
+
+                double balance = account.balance;
+                balance = MoneyDraft(moneyBill, balance); //todo ver como retornar a quantidade de notas
+                account.balance = balance;
+
+                return Ok(account.balance);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Error!: " + ex.Message);
+            }
+        }
+
+        [HttpGet("deposit/value={value:int}&id={id:int}")]
+        public IActionResult Deposit(double value, int id)
+        {
+            try
+            {
+                var account = _accountRepository.getById(id);
+                double balance = account.balance;
+                balance = balance += value;
+
+                return Ok(balance);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Error!: " + ex.Message);
+            }
+        }
+
+        [HttpGet("transfer/value={value:int}&id={id:int}&target={target:int}")]
+        public IActionResult Transfer(double value, int id, int target)
+        {
+            try
+            {
+                var account = _accountRepository.getById(id);
+                var targetAccount = _accountRepository.getById(target);
+
+                if(targetAccount != account)
+                {
+                    double balance = targetAccount.balance;
+
+                    if (balance >= value)
+                    {
+                        account.balance -= value;
+                        targetAccount.balance += value;
+                    }
+
+                    return Ok(value);
+                } else
+                {
+                    return Ok(null);
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Error!: " + ex.Message);
+            }
         }
 
         public void SortMoneyBill(double[] moneyBill) //ordena as notas para descrescente

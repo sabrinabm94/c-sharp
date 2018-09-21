@@ -1,40 +1,49 @@
 ﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using WebApplication1.Model;
+using WebApplication1.Repository;
 
 namespace WebApplication1.Controllers
 {
-    public class AccountController
+    [Route("api/[Controller]")]
+    public class AccountController : Controller
     {
-        public double balance;
+        private readonly IAccountRepository _accountRepository;
 
-        public bool Draft(double value)
+        public AccountController(IUserRepository userRepository, IAccountRepository accountRepository)
         {
-            if (this.balance > value)
-            {
-                this.balance -= value;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public void Deposit(double value)
-        {
-            this.balance += value;
+            _accountRepository = accountRepository;
         }
 
-        public bool Transfer(double value, AccountController targetAccount)
+        [HttpPost("register")]
+        public IActionResult setUser(Account account)
         {
-            if (this.balance < value)
+            try
             {
-                return false;
+                _accountRepository.save(account);
+                return Created("/api/account", account);
             }
-            else
+            catch (Exception ex)
             {
-                this.balance -= value;
-                targetAccount.Deposit(value);
-                return true;
+                return BadRequest("Error!: " + ex.Message);
+            }
+        }
+
+        [HttpGet("search={id:int}")]
+        public IActionResult GetAccountById(int id)
+        {
+            try
+            {
+                var account = _accountRepository.getById(id);
+                return Ok(account);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Error!: " + ex.Message);
             }
         }
     }
 }
+
+
+

@@ -9,6 +9,7 @@ namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
+        //quando for chamado, abre uma página na tela
         public IActionResult Index()
         {
             return View();
