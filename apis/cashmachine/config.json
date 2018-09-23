@@ -1,0 +1,5 @@
+﻿{
+  "ConnectionStrings": {
+    "MyWebAppDb": "Server=127.0.0.1,3306;Initial Catalog=api;Persist Security Info=False;User ID=root;Password=;Connection Timeout=30;"
+  }
+}
