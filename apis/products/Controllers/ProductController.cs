@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyWebApp.Models;
 using MyWebApp.Repository;
 using System;
 
@@ -22,13 +23,56 @@ namespace MyWebApp.Controllers
         }
 
         [HttpGet("list")]
-        public IActionResult listAllProducts()
+        public IActionResult listAll()
         {
             try
             {
                 return Ok(_productRepository.listProducts());
 
             } catch(Exception error)
+            {
+                return BadRequest("Error: " + error);
+            }
+        }
+
+        [HttpGet("list/{id:int}")]
+        public IActionResult list(int id)
+        {
+            try
+            {
+                return Ok(_productRepository.listProductById(id));
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest("Error: " + error);
+            }
+        }
+
+        [HttpPost("register")]
+        public IActionResult save([FromBody]Product product)
+        {
+            try
+            {
+                _productRepository.saveProduct(product);
+                return Created("/api/product", product);
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest("Error: " + error);
+            }
+        }
+
+        [HttpDelete("delete/{id:int}")]
+        public IActionResult delete(int id)
+        {
+            try
+            {
+                return Ok(_productRepository.removeProductById(id));
+
+            }
+            catch (Exception error)
             {
                 return BadRequest("Error: " + error);
             }

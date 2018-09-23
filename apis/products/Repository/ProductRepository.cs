@@ -18,5 +18,24 @@ namespace MyWebApp.Repository
         {
             return _context.Products.ToList();
         }
+
+        public Product listProductById(int id)
+        {
+            return _context.Products.FirstOrDefault(p => p.id == id);
+        }
+
+        public void saveProduct(Product product)
+        {
+            _context.Products.Add(product); //aplica as alterações na memória
+            _context.SaveChanges(); //aplica as alterações da memória para o modelo no banco de dados
+        }
+
+        public Product removeProductById(int id)
+        {
+            var product = _context.Products.FirstOrDefault(p => p.id == id);
+            _context.Products.Remove(product);
+            _context.SaveChanges();
+            return product;
+        }
     }
 }
