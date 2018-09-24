@@ -7,13 +7,18 @@ namespace MyWebApp.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IAccountRepository _accountRepository;
-        //private readonly ICashMachineRepository _cashMachineRepository;
+        private readonly IMoneyBillRepository _moneyBillRepository;
 
-        public HomeController(IUserRepository userRepository, IAccountRepository accountRepository)
+        public HomeController(IUserRepository userRepository, IAccountRepository accountRepository, IMoneyBillRepository moneyBillRepository)
         {
             _userRepository = userRepository;
             _accountRepository = accountRepository;
-            //_cashMachineRepository = cashMachineRepository;
+            _moneyBillRepository = moneyBillRepository;
+        }
+
+        public IActionResult Index()
+        {
+            return View();
         }
     }
 }

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cash Machine</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <main class="main">
+        <section class="form">
+            <h1 class="title">Cash Machine</h1>
+            <form class="cashmachine" role="form">
+                <div class="formgroup">
+                    <label class="checkbox">
+                        <input type="checkbox" id="withdraw" value="withdraw"> Withdraw
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" id="deposit" value="deposit"> Deposit
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" id="transfer" value="transfer"> Transfer
+                    </label>
+                </div>
+                <div class="formgroup inputs">
+                    <label class="account">
+                        <input type="text" id="account" placeholder="Your Account">
+                    </label>
+                    <label class="target">
+                        <input type="text" id="target" placeholder="Target Account">
+                    </label>
+                    <label class="value">
+                        <input type="text" id="value" placeholder="Value">
+                    </label>
+                </div>
+                <div class="formgroup">
+                    <button class="button">
+                        <input id="submit" type="submit" />Send
+                    </button>
+                </div>
+            </form>
+        </section>
+        <section class="results">
+            <h3 class="balance">Your Balance: <span id="balance-value"></span></h3>
+        </section>
+        <section class="money-bills">
+            <ul class="list"></ul>
+        </section>
+    </main>
+    <script src="cash-machine.js"></script>
+</body>
+</html>

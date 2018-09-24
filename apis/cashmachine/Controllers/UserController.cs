@@ -40,13 +40,35 @@ namespace MyWebApp.Controllers
             }
         }
 
+        [HttpGet("list/{username}")]
+        public IActionResult ListByUsername(string username)
+        {
+            try
+            {
+                return Ok(_userRepository.listByUsername(username));
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest("Error: " + error);
+            }
+        }
+
         [HttpPost("register")]
         public IActionResult Save([FromBody]User user)
         {
             try
             {
-                _userRepository.save(user);
-                return Created("/api/user", user);
+                string newUser = user.username;
+                var registredUser = _userRepository.listByUsername(newUser);
+
+                if(registredUser == null || registredUser.username != newUser)
+                {
+                    _userRepository.save(user);
+                    return Created("/api/user", user);
+                }
+                return Ok(null);
+
             }
             catch (Exception error)
             {
@@ -68,22 +90,19 @@ namespace MyWebApp.Controllers
             }
         }
 
-        [HttpGet("username={username}&password={password}")]
-        //localhost:54681/api/user/autentication/username=sabrina&password=sabrina123
-        public IActionResult Autentication(string username, string password)
+        [HttpPost("login")]
+        //http://localhost:54681/api/user/login
+        public IActionResult Login([FromBody]User user)
         {
             try
             {
-                var account = _userRepository.listByUsername(username);
-                if (account.password == password)
+                var userRegistred = _userRepository.listByUsername(user.username);
+
+                if (userRegistred != null && userRegistred.username == user.username && userRegistred.password == user.password)
                 {
                     return Ok(true);
                 }
-                else
-                {
-                    return Ok(false);
-                }
-
+                return Ok(false);
 
             }
             catch (Exception error)
