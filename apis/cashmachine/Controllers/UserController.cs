@@ -67,5 +67,29 @@ namespace MyWebApp.Controllers
                 return BadRequest("Error: " + error);
             }
         }
+
+        [HttpGet("username={username}&password={password}")]
+        //localhost:54681/api/user/autentication/username=sabrina&password=sabrina123
+        public IActionResult Autentication(string username, string password)
+        {
+            try
+            {
+                var account = _userRepository.listByUsername(username);
+                if (account.password == password)
+                {
+                    return Ok(true);
+                }
+                else
+                {
+                    return Ok(false);
+                }
+
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest("Error: " + error);
+            }
+        }
     }
 }

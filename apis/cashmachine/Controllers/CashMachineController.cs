@@ -87,7 +87,7 @@ namespace MyWebApp.Controllers
                 var account = _accountRepository.listById(id);
                 double balance = account.balance;
 
-                if (balance > value)
+                if (balance >= value)
                 {
                     account.balance = balance - MoneyDraft(value);
 

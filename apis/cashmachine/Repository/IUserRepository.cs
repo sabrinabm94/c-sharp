@@ -9,5 +9,6 @@ namespace MyWebApp.Repository
         User removeById(int id);
         void save(User user);
         void Update(User user);
+        User listByUsername(string username);
     }
 }

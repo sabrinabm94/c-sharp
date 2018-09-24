@@ -43,5 +43,10 @@ namespace MyWebApp.Repository
             _context.Update(user);
             _context.SaveChanges();
         }
+
+        public User listByUsername(string username)
+        {
+            return _context.Users.FirstOrDefault(p => p.username == username);
+        }
     }
 }
