@@ -9,6 +9,10 @@ button:focus, input:focus {
     outline: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 .title, results {
     font-weight: bold;
 }
@@ -26,16 +30,16 @@ button:focus, input:focus {
     padding-left: 0;
 }
 
-.content, .form, .cashmachine, .button, .cashmachine .formgroup.inputs input, .money-bills {
+.content, .form, .cashmachine, .button, .cashmachine .formgroup.inputs input, .money-bills, .index, .index .button {
     margin: 0 auto;
     display: block;
 }
 
-input, .button, .cashmachine .checkbox, .title, .results, .money-bills {
+input, .button, .cashmachine .checkbox, .title, .results, .money-bills, .index .link, .cashmachine .title {
     text-align: center;
 }
 
-.cashmachine, .formgroup, .register input {
+.cashmachine, .formgroup, .register input, .index {
     width: 100%;
 }
 
@@ -43,12 +47,20 @@ input, .button, .cashmachine .checkbox, .title, .results, .money-bills {
     width: 60%;
 }
 
-.cashmachine .checkbox {
-    display: inline-block;
+.index .button {
+    width: 40%;
+    margin-bottom: 20px;
+}
+
+cashmachine .checkbox {
     width: 30%;
 }
 
-.cashmachine .checkbox, .button {
+.cashmachine .checkbox {
+    display: inline-block;
+}
+
+.cashmachine .checkbox, .button, .index .link {
     margin-top: 20px;
     margin-bottom: 20px;
 }

@@ -1,11 +1,13 @@
 ﻿$(".register-account").submit(function (event) {
     event.preventDefault();
 
+    var id = $('#id').val();
     var type = $('#type').val();
     var userId = $('#userId').val();
 
     if (type != '', userId != '') {
         var account = {
+            id: id,
             type: type,
             userId: userId
         }

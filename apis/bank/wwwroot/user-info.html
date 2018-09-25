@@ -11,6 +11,7 @@
     <main class="main content">
         <section class="user-info">
             <h2 class="title">User info</h2>
+            <h3 class="id">Id: <span id="id"></span></h3>
             <h3 class="name">Name: <span id="name"></span></h3>
             <h3 class="username">Username: <span id="username"></span></h3>
             <h3 class="adress">Adress: <span id="address"></span></h3>
@@ -19,11 +20,30 @@
             <h3 class="accountId">Account id: <span id="accountId"></span></h3>
         </section>
         <section class="acount-info">
+            <h2 class="account-id">Account id: <span id="account-id"></span></h2>
             <h2 class="type">Type: <span id="type"></span></h2>
             <h3 class="balance">Balance: <span id="balance"></span></h3>
         </section>
-        <section class="login">
-            <h2 title="title">Use the functions of cash machine <a href="/cash-machine.html">Here</a></h2>
+        <section class="update" style="display: none;">
+            <a class="link" href="/user-update.html">
+                <button class="button">Update info</button>
+            </a>
+        </section>
+        <section class="register-account">
+            <a class="link" href="/account-register.html">
+                <button class="button">Register account</button>
+            </a>
+        </section>
+        <section class="cashmachine">
+            <h2 title="title">Use the functions of cash machine</h2>
+            <a class="link" href="/cash-machine.html">
+                <button class="button">Cash Machine</button>
+            </a>
+        </section>
+        <section class="loggout">
+            <a class="link" href="/index.html">
+                <button class="button">Loggout</button>
+            </a>
         </section>
     </main>
     <script src="user-info.js"></script>
