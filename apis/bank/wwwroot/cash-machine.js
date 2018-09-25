@@ -1,13 +1,16 @@
-﻿$.ajax({
-    url: "https://localhost:44323/api/user/list/" + Cookies.get('userid'),
+﻿$('#target').hide();
+var userid = Cookies.get('userid');
+var accountid;
+
+$.ajax({
+    url: "http://localhost:54681/api/user/list/" + userid,
     context: document.body,
     success: function (results) {
-        $("#account").text(results.accountId);
-        $("#account").attr("placeholder", results.accountId);
+        accountid = results.accountId;
     },
     statusCode: {
         404: function () {
-            alert('User: Api off');
+            alert('Api off');
         },
 
         400: function () {
@@ -16,7 +19,6 @@
     }
 });
 
-$('#target').hide();
 
 $("#transfer").change(function () {
     if ($('#transfer').is(':checked')) {
@@ -28,7 +30,6 @@ $("#transfer").change(function () {
 
 $(".cashmachine").submit(function (event) {
     event.preventDefault();
-    var account = $('#account').val();
     var target = $('#target').val();
     var value = $('#value').val();
     var action = '';
@@ -41,10 +42,10 @@ $(".cashmachine").submit(function (event) {
         action = 'withdraw';
     }
 
-    if (account != '' && value != '' && action != '') {
+    if (accountid != '' && value != '' && action != '') {
         if (action == 'transfer' && target != '') {
             $.ajax({
-                url: "https://localhost:44323/api/cashmachine/" + action + "/accountId=" + account + "&accountTarget=" + target + "&value=" + value,
+                url: "http://localhost:54681/api/cashmachine/" + action + "/accountId=" + accountid + "&accountTarget=" + target + "&value=" + value,
                 context: document.body,
                 success: function (results) {
                     $('.results #balance-value').text("");
@@ -64,7 +65,7 @@ $(".cashmachine").submit(function (event) {
             alert('Fill the target field');
         } else {
             $.ajax({
-                url: "https://localhost:44323/api/cashmachine/" + action + "/accountId=" + account + "&value=" + value,
+                url: "http://localhost:54681/api/cashmachine/" + action + "/accountId=" + accountid + "&value=" + value,
                 context: document.body,
                 success: function (results) {
                     $('.results #balance-value').text("");
@@ -72,7 +73,7 @@ $(".cashmachine").submit(function (event) {
 
                     if (action == 'withdraw') {
                         $.ajax({
-                            url: "https://localhost:44323/api/cashmachine/moneybills",
+                            url: "http://localhost:54681/api/cashmachine/moneybills",
                             context: document.body,
                             success: function (results) {
                                 $('.money-bills .list').html("");

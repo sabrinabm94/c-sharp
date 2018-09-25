@@ -11,7 +11,7 @@
         }
 
         $.ajax({
-            url: 'https://localhost:44323/api/user/login',
+            url: 'http://localhost:54681/api/user/login',
             type: 'post',
             dataType: 'json',
             contentType: 'application/json',
@@ -20,7 +20,7 @@
                     alert("Sucess!");
 
                     $.ajax({
-                        url: "https://localhost:44323/api/user/list/" + username,
+                        url: "http://localhost:54681/api/user/list/" + username,
                         context: document.body,
                         success: function (results) {
                             Cookies.set('userid', results.id, {expires: 1});

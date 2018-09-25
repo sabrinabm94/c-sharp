@@ -13,7 +13,7 @@
         }
 
         $.ajax({
-            url: 'https://localhost:44323/api/account/register',
+            url: 'http://localhost:54681/api/account/register',
             type: 'post',
             dataType: 'json',
             contentType: 'application/json',

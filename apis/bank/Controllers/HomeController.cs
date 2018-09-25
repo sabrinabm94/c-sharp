@@ -16,9 +16,9 @@ namespace MyWebApp.Controllers
             _moneyBillRepository = moneyBillRepository;
         }
 
-        public IActionResult Index()
+        /*public IActionResult Index()
         {
             return View();
-        }
+        }*/
     }
 }

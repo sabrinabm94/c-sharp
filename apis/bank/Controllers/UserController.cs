@@ -124,5 +124,21 @@ namespace MyWebApp.Controllers
                 return BadRequest("Error: " + error);
             }
         }
+
+        [HttpPut("update")]
+        public IActionResult Update([FromBody]User user)
+        {
+            try
+            {
+                _userRepository.removeById(user.id);
+                _userRepository.save(user);
+                return Created("/api/user", user);
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest("Error: " + error);
+            }
+        }
     }
 }

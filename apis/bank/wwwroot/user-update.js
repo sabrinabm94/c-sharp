@@ -1,6 +1,6 @@
 ﻿$(".register-update").submit(function (event) {
     event.preventDefault();
-
+    //todo não precisar digitar novamente toda a informação para o update, somente o que quer alterar
     var name = $('#name').val();
     var username = $('#username').val();
     var password = $('#password').val();
@@ -9,10 +9,11 @@
     var phone = $('#phone').val();
     var accountId = $('#accountId').val();
 
-    if (name != '', username != '', password != '', address != '', email != '', phone != '', accountId != '') {
+    if (name != '', username != '', password != '', address != '', email != '', phone != '') {
         var user = {
-            name: name,
+            id: Cookies.get('userid'),
             username: username,
+            name: name,
             password: password,
             address: address,
             email: email,
@@ -21,8 +22,8 @@
         }
 
         $.ajax({
-            url: 'https://localhost:44323/api/user/update',
-            type: 'post',
+            url: 'http://localhost:54681/api/user/update',
+            type: 'put',
             dataType: 'json',
             contentType: 'application/json',
             success: function (data) {
@@ -35,10 +36,8 @@
                 $('#email').val("");
                 $('#phone').val("");
                 $('#accountId').val("");
-                
             },
             error: function (error) {
-                console.log(error);
                 alert("Error: " + error);
             },
             data: JSON.stringify(user),
