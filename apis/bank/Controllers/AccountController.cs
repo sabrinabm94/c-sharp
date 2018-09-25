@@ -70,5 +70,19 @@ namespace MyWebApp.Controllers
                 return BadRequest("Error: " + error);
             }
         }
+
+        [HttpDelete("delete")]
+        public IActionResult Delete([FromBody]Account account)
+        {
+            try
+            {
+                return Ok(_accountRepository.remove(account));
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest("Error: " + error);
+            }
+        }
     }
 }

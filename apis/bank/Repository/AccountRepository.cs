@@ -37,6 +37,13 @@ namespace MyWebApp.Repository
             return account;
         }
 
+        public Account remove(Account account)
+        {
+            _context.Accounts.Remove(account);
+            _context.SaveChanges();
+            return account;
+        }
+
         public void UpdateBalanceAccount(Account account)
         {
             _context.Update(account);

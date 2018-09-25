@@ -30,6 +30,13 @@ namespace MyWebApp.Repository
             _context.SaveChanges();
         }
 
+        public User remove(User user)
+        {
+            _context.Users.Remove(user);
+            _context.SaveChanges();
+            return user;
+        }
+
         public User removeById(int id)
         {
             var user = _context.Users.FirstOrDefault(p => p.id == id);

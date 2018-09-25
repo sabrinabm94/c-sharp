@@ -1,0 +1,3 @@
+- mysql
+- entity framework
+- jquery

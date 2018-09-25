@@ -90,6 +90,20 @@ namespace MyWebApp.Controllers
             }
         }
 
+        [HttpDelete("delete")]
+        public IActionResult Delete([FromBody]User user)
+        {
+            try
+            {
+                return Ok(_userRepository.remove(user));
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest("Error: " + error);
+            }
+        }
+
         [HttpPost("login")]
         //http://localhost:54681/api/user/login
         public IActionResult Login([FromBody]User user)
