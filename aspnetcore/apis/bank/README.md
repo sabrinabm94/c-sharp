@@ -3,14 +3,18 @@ Apis to control bank accounts, bank actios and users.
 
 ## Methods variables
 
-### Acounts
-* list
+### Acounts /User
+* list all
 
 * list by id
 
-* register
+* save
 
 * delete
+
+* update
+
+* login (users only)
 
 
 ### Bank actions
@@ -19,20 +23,6 @@ Apis to control bank accounts, bank actios and users.
 * transfer
 
 * withdraw
-
-
-### Users
-* list
-
-* list by id
-
-* register
-
-* delete
-
-* login
-
-* update
 
 ---
 
