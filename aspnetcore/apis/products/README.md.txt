@@ -1,9 +1,14 @@
+# Resume
 This project is a api to controll products.
 
-- The api was built with ASP.NET Core.
+# Project architecture
 
-- The database table was created and manipulated using the Entity Framework.
+* Framework: ASP.NET Core
 
-- The front end was done with angular, html pages and css to a basic stylize.
+* Api data format: json
 
-- The api return data in json format.
+* Database: MySql
+
+* Database creation and manipulation: Entity Framework
+
+* Front end: html, css and Angular
