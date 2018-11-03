@@ -1,7 +1,7 @@
 # Resume
 This project is a api to controll products.
 
-hr
+---
 
 # Project architecture
 
