@@ -3,7 +3,7 @@ Apis to control bank accounts, bank actios and users.
 
 ## Methods variables
 
-### Bank acounts
+### Acounts
 * list
 
 * list by id
@@ -21,7 +21,7 @@ Apis to control bank accounts, bank actios and users.
 * withdraw
 
 
-### Bank users
+### Users
 * list
 
 * list by id
