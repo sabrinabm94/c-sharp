@@ -16,18 +16,20 @@ namespace MyWebApp.Controllers
             _productRepository = productRepository;
         }
 
+        //http://localhost:54681/api/product/test
         [HttpGet("test")]
         public string test()
         {
             return "Teste";
         }
 
+        //http://localhost:54681/api/product/list
         [HttpGet("list")]
         public IActionResult listAll()
         {
             try
             {
-                return Ok(_productRepository.listProducts());
+                return Ok(_productRepository.list());
 
             } catch(Exception error)
             {
@@ -35,12 +37,13 @@ namespace MyWebApp.Controllers
             }
         }
 
+        //http://localhost:54681/api/product/list/1
         [HttpGet("list/{id:int}")]
         public IActionResult list(int id)
         {
             try
             {
-                return Ok(_productRepository.listProductById(id));
+                return Ok(_productRepository.listById(id));
 
             }
             catch (Exception error)
@@ -49,12 +52,13 @@ namespace MyWebApp.Controllers
             }
         }
 
-        [HttpPost("register")]
+        //http://localhost:54681/api/product/save
+        [HttpPost("save")]
         public IActionResult save([FromBody]Product product)
         {
             try
             {
-                _productRepository.saveProduct(product);
+                _productRepository.save(product);
                 return Created("/api/product", product);
 
             }
@@ -64,12 +68,44 @@ namespace MyWebApp.Controllers
             }
         }
 
-        [HttpDelete("delete/{id:int}")]
-        public IActionResult delete(int id)
+        //http://localhost:54681/api/product/delete
+        [HttpDelete("delete")]
+        public IActionResult delete([FromBody]Product product)
         {
             try
             {
-                return Ok(_productRepository.removeProductById(id));
+                return Ok(_productRepository.delete(product));
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest("Error: " + error);
+            }
+        }
+
+        //http://localhost:54681/api/product/delete/1
+        [HttpDelete("deleteById/{id:int}")]
+        public IActionResult deleteById(int id)
+        {
+            try
+            {
+                return Ok(_productRepository.deleteById(id));
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest("Error: " + error);
+            }
+        }
+
+        [HttpPut("update")]
+        //http://localhost:54681/api/product/update
+        public IActionResult update([FromBody] Product product)
+        {
+            try
+            {
+                _productRepository.update(product);
+                return Created("/api/product", product);
 
             }
             catch (Exception error)

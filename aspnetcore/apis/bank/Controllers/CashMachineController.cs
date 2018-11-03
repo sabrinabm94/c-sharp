@@ -23,7 +23,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_moneyBillRepository.List());
+                return Ok(_moneyBillRepository.list());
 
             }
             catch (Exception error)
@@ -42,7 +42,7 @@ namespace MyWebApp.Controllers
 
                 account.balance = account.balance + value;
 
-                _accountRepository.UpdateBalanceAccount(account);
+                _accountRepository.update(account);
 
                 return Ok(account.balance);
             }
@@ -67,7 +67,7 @@ namespace MyWebApp.Controllers
                     account.balance = account.balance - value;
                     target.balance = target.balance + value;
 
-                    _accountRepository.UpdateBalanceAccounts(account, target);
+                    _accountRepository.updateAccounts(account, target);
                 }
 
                 return Ok(account.balance);
@@ -89,9 +89,9 @@ namespace MyWebApp.Controllers
 
                 if (balance >= value)
                 {
-                    account.balance = balance - MoneyDraft(value);
+                    account.balance = balance - withdrawMoney(value);
 
-                    _accountRepository.UpdateBalanceAccount(account);
+                    _accountRepository.update(account);
                 }
 
                 return Ok(account.balance); //retorna o valor sacado sem o resto que não pode ser retirado!
@@ -102,36 +102,36 @@ namespace MyWebApp.Controllers
             }
         }
 
-        public double MoneyDraft(double value)
+        public double withdrawMoney(double value)
         {
-            double valueMoneyDraft = value;
+            double withdrawValue = value;
             double remainder = 0;
 
-            if (!_moneyBillRepository.List().Any()) //so cria se não existir
+            if (!_moneyBillRepository.list().Any()) //so cria se não existir
             {
                 MoneyBill moneyBill100 = new MoneyBill();
                 moneyBill100.value = 100.0;
-                _moneyBillRepository.Update(moneyBill100);
+                _moneyBillRepository.update(moneyBill100);
 
                 MoneyBill moneyBill50 = new MoneyBill();
                 moneyBill50.value = 50.0;
-                _moneyBillRepository.Update(moneyBill50);
+                _moneyBillRepository.update(moneyBill50);
 
                 MoneyBill moneyBill20 = new MoneyBill();
                 moneyBill20.value = 20.0;
-                _moneyBillRepository.Update(moneyBill20);
+                _moneyBillRepository.update(moneyBill20);
 
                 MoneyBill moneyBill5 = new MoneyBill();
                 moneyBill5.value = 5.0;
-                _moneyBillRepository.Update(moneyBill5);
+                _moneyBillRepository.update(moneyBill5);
 
                 MoneyBill moneyBill2 = new MoneyBill();
                 moneyBill2.value = 2.0;
-                _moneyBillRepository.Update(moneyBill2);
+                _moneyBillRepository.update(moneyBill2);
             }
 
             var moneyBillsList = new List<MoneyBill>();
-            foreach (var moneyBill in _moneyBillRepository.List())
+            foreach (var moneyBill in _moneyBillRepository.list())
             {
                 moneyBillsList.Add(moneyBill);
             }
@@ -142,20 +142,20 @@ namespace MyWebApp.Controllers
                 { //se o valor do saque for igual ao value da nota
                     moneyBillsList[i].quantity += 1;
                     value -= moneyBillsList[i].value;
-                    _moneyBillRepository.Update(moneyBillsList[i]);
+                    _moneyBillRepository.update(moneyBillsList[i]);
                     i = -1;
                 }
                 else if (value == 6)
                 { //se o valor da retirada for impar, tenta tirar o 5 primeiro
                     moneyBillsList[4].quantity += 1;
                     value -= moneyBillsList[4].value;
-                    _moneyBillRepository.Update(moneyBillsList[4]);
+                    _moneyBillRepository.update(moneyBillsList[4]);
                 }
                 else if (value > moneyBillsList[i].value)
                 { //se o valor do saque for maior, adiciona essa nota para ser sacada
                     moneyBillsList[i].quantity += 1;
                     value -= moneyBillsList[i].value;
-                    _moneyBillRepository.Update(moneyBillsList[i]);
+                    _moneyBillRepository.update(moneyBillsList[i]);
                     i = -1;
                 }
             }
@@ -169,7 +169,7 @@ namespace MyWebApp.Controllers
                     { //ve se tem como tirar alguma nota com o resto
                         moneyBillsList[j].quantity += 1;
                         remainder -= moneyBillsList[j].value;
-                        _moneyBillRepository.Update(moneyBillsList[j]);
+                        _moneyBillRepository.update(moneyBillsList[j]);
                     }
                     else
                     {
@@ -177,12 +177,12 @@ namespace MyWebApp.Controllers
                     }
                 }
                 //retorna o valor de saque (o resto que sobrou não foi retirado)
-                return valueMoneyDraft - remainder;
+                return withdrawValue - remainder;
 
             }
             else
             { //retorna o valor de saque (foi retirado todo o valor solicitado)
-                return valueMoneyDraft;
+                return withdrawValue;
             }
         }
     }

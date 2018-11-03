@@ -32,7 +32,7 @@ namespace MyWebApp
         {
             //conexão com o banco de dados
             var sqlConnection = _configuration.GetConnectionString("MyWebAppDb");
-            services.AddDbContext<Context>(options => 
+            services.AddDbContext<Context>(options =>
             options.UseMySql(sqlConnection, b => b.MigrationsAssembly("MyWebApp")));
 
             services.AddMvc();

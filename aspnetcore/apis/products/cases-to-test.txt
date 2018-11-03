@@ -1,0 +1,39 @@
+Get: 
+http://localhost:54681/api/product/list
+
+Get:
+http://localhost:54681/api/product/list/1
+
+Post:
+http://localhost:54681/api/product/save
+
+Body JSON:
+{
+	"id" : 10,
+	"name" : "product10",
+	"description" : "description of product10",
+	"price" : 10.00
+}
+
+Put: 
+http://localhost:54681/api/product/update/
+
+Body JSON:
+{
+	"id" : 10,
+	"name" : "product10",
+	"description" : "description of product10",
+	"price" : 20.00
+}
+
+Delete:
+http://localhost:54681/api/product/delete/
+
+Body JSON:
+{
+	"id" : 10,
+	"name" : "product10",
+	"description" : "description of product10",
+	"price" : 20.00
+}
+

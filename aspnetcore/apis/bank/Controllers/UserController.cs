@@ -14,7 +14,7 @@ namespace MyWebApp.Controllers
         }
 
         [HttpGet("list")]
-        public IActionResult ListAll()
+        public IActionResult list()
         {
             try
             {
@@ -27,7 +27,7 @@ namespace MyWebApp.Controllers
         }
 
         [HttpGet("list/{id:int}")]
-        public IActionResult List(int id)
+        public IActionResult listById(int id)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace MyWebApp.Controllers
         }
 
         [HttpGet("list/{username}")]
-        public IActionResult ListByUsername(string username)
+        public IActionResult listByUsername(string username)
         {
             try
             {
@@ -54,8 +54,8 @@ namespace MyWebApp.Controllers
             }
         }
 
-        [HttpPost("register")]
-        public IActionResult Save([FromBody]User user)
+        [HttpPost("save")]
+        public IActionResult save([FromBody]User user)
         {
             try
             {
@@ -77,11 +77,11 @@ namespace MyWebApp.Controllers
         }
 
         [HttpDelete("delete/{id:int}")]
-        public IActionResult Delete(int id)
+        public IActionResult deleteById(int id)
         {
             try
             {
-                return Ok(_userRepository.removeById(id));
+                return Ok(_userRepository.deleteById(id));
 
             }
             catch (Exception error)
@@ -91,11 +91,26 @@ namespace MyWebApp.Controllers
         }
 
         [HttpDelete("delete")]
-        public IActionResult Delete([FromBody]User user)
+        public IActionResult delete([FromBody]User user)
         {
             try
             {
-                return Ok(_userRepository.remove(user));
+                return Ok(_userRepository.delete(user));
+
+            }
+            catch (Exception error)
+            {
+                return BadRequest("Error: " + error);
+            }
+        }
+
+        [HttpPut("update")]
+        public IActionResult update([FromBody]User user)
+        {
+            try
+            {
+                _userRepository.update(user);
+                return Created("/api/user", user);
 
             }
             catch (Exception error)
@@ -106,7 +121,7 @@ namespace MyWebApp.Controllers
 
         [HttpPost("login")]
         //http://localhost:54681/api/user/login
-        public IActionResult Login([FromBody]User user)
+        public IActionResult login([FromBody]User user)
         {
             try
             {
@@ -117,22 +132,6 @@ namespace MyWebApp.Controllers
                     return Ok(true);
                 }
                 return Ok(false);
-
-            }
-            catch (Exception error)
-            {
-                return BadRequest("Error: " + error);
-            }
-        }
-
-        [HttpPut("update")]
-        public IActionResult Update([FromBody]User user)
-        {
-            try
-            {
-                _userRepository.removeById(user.id);
-                _userRepository.save(user);
-                return Created("/api/user", user);
 
             }
             catch (Exception error)

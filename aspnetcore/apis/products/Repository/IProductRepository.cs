@@ -5,12 +5,16 @@ namespace MyWebApp.Repository
 {
     public interface IProductRepository
     {
-        List<Product> listProducts();
+        List<Product> list();
 
-        Product listProductById(int id);
+        Product listById(int id);
 
-        void saveProduct(Product product);
+        Product save(Product product);
 
-        Product removeProductById(int id);
+        Product deleteById(int id);
+
+        Product delete(Product product);
+
+        Product update(Product product);
     }
 }

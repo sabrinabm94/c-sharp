@@ -5,7 +5,7 @@ namespace MyWebApp.Repository
 {
     public interface IMoneyBillRepository
     {
-        void Update(MoneyBill moneyBill);
-        List<MoneyBill> List();
+        void update(MoneyBill moneyBill);
+        List<MoneyBill> list();
     }
 }

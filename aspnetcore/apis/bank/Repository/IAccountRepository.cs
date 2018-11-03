@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MyWebApp.Repository
 {
@@ -6,10 +7,10 @@ namespace MyWebApp.Repository
     {
         List<Account> list();
         Account listById(int id);
-        Account removeById(int id);
-        Account remove(Account account);
-        void save(Account account);
-        void UpdateBalanceAccounts(Account account, Account target);
-        void UpdateBalanceAccount(Account account);
+        Account save(Account account);
+        Account deleteById(int id);
+        Account delete(Account account);
+        Account update(Account newAccount);
+        Object updateAccounts(Account account, Account target);
     }
 }

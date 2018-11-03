@@ -1,0 +1,69 @@
+Post:
+http://localhost:54681/api/user/save
+
+Body JSON:
+{
+    "id": 1,
+    "name": "Sabrina B.",
+    "username": "sabrina",
+    "password": "sabrina123",
+    "address": "Rua teste 00, teste",
+    "email": "sabrinabgbc@email.com",
+    "phone": 5500000000000,
+    "accountId": 1
+}
+
+Get: 
+http://localhost:54681/api/user/list
+
+
+Get:
+http://localhost:54681/api/user/list/1
+
+
+Put: 
+http://localhost:54681/api/user/update
+
+Body JSON:
+{
+    "id": 1,
+    "name": "Sabrina B.",
+    "username": "sabrina",
+    "password": "sabrina1234",
+    "address": "Rua teste 00, teste",
+    "email": "sabrinabgbc@email.com",
+    "phone": 5500000000000,
+    "accountId": 1
+}
+
+Post:
+localhost:54681/api/user/login
+
+Body JSON:
+{
+    "id": 1,
+    "name": "Sabrina B.",
+    "username": "sabrina",
+    "password": "sabrina1234",
+    "address": "Rua teste 00, teste",
+    "email": "sabrinabgbc@email.com",
+    "phone": 5500000000000,
+    "accountId": 1
+}
+
+
+Delete:
+http://localhost:54681/api/user/delete
+
+Body JSON:
+{
+    "id": 1,
+    "name": "Sabrina B.",
+    "username": "sabrina",
+    "password": "sabrina1234",
+    "address": "Rua teste 00, teste",
+    "email": "sabrinabgbc@email.com",
+    "phone": 5500000000000,
+    "accountId": 1
+}
+

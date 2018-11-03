@@ -24,20 +24,27 @@ namespace MyWebApp.Repository
             return _context.Users.FirstOrDefault(p => p.id == id);
         }
 
-        public void save(User user)
+        public User listByUsername(string username)
+        {
+            return _context.Users.FirstOrDefault(p => p.username == username);
+        }
+
+        public User save(User user)
         {
             _context.Users.Add(user); 
             _context.SaveChanges();
+
+            return user;
         }
 
-        public User remove(User user)
+        public User delete(User user)
         {
             _context.Users.Remove(user);
             _context.SaveChanges();
             return user;
         }
 
-        public User removeById(int id)
+        public User deleteById(int id)
         {
             var user = _context.Users.FirstOrDefault(p => p.id == id);
             _context.Users.Remove(user);
@@ -45,15 +52,12 @@ namespace MyWebApp.Repository
             return user;
         }
 
-        public void Update(User user)
+        public User update(User user)
         {
             _context.Update(user);
             _context.SaveChanges();
-        }
 
-        public User listByUsername(string username)
-        {
-            return _context.Users.FirstOrDefault(p => p.username == username);
+            return user;
         }
     }
 }

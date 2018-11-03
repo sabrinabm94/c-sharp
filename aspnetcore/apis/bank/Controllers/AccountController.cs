@@ -15,7 +15,7 @@ namespace MyWebApp.Controllers
         }
 
         [HttpGet("list")]
-        public IActionResult listAll()
+        public IActionResult list()
         {
             try
             {
@@ -29,7 +29,7 @@ namespace MyWebApp.Controllers
         }
 
         [HttpGet("list/{id:int}")]
-        public IActionResult list(int id)
+        public IActionResult listById(int id)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace MyWebApp.Controllers
             }
         }
 
-        [HttpPost("register")]
+        [HttpPost("save")]
         public IActionResult save([FromBody]Account account)
         {
             try
@@ -58,11 +58,11 @@ namespace MyWebApp.Controllers
         }
 
         [HttpDelete("delete/{id:int}")]
-        public IActionResult delete(int id)
+        public IActionResult deleteById(int id)
         {
             try
             {
-                return Ok(_accountRepository.removeById(id));
+                return Ok(_accountRepository.deleteById(id));
 
             }
             catch (Exception error)
@@ -72,11 +72,11 @@ namespace MyWebApp.Controllers
         }
 
         [HttpDelete("delete")]
-        public IActionResult Delete([FromBody]Account account)
+        public IActionResult delete([FromBody]Account account)
         {
             try
             {
-                return Ok(_accountRepository.remove(account));
+                return Ok(_accountRepository.delete(account));
 
             }
             catch (Exception error)

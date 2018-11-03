@@ -14,7 +14,7 @@ namespace MyWebApp.Controllers
 
         public IActionResult Index()
         {
-            return View(_productRepository.listProducts());
+            return View(_productRepository.list());
         }
 
         public string test()

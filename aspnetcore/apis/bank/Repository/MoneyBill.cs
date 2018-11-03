@@ -14,12 +14,12 @@ namespace MyWebApp.Repository
             _context = context;
         }
 
-        public List<MoneyBill> List()
+        public List<MoneyBill> list()
         {
             return _context.MoneyBills.ToList();
         }
 
-        public void Update(MoneyBill moneyBill)
+        public void update(MoneyBill moneyBill)
         {
             _context.Update(moneyBill);
             _context.SaveChanges();

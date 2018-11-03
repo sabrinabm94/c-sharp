@@ -327,3 +327,14 @@ C:\Users\Pichau\source\repos\MyWebAppSolution\MyWebApp\bin\Debug\netcoreapp2.0\r
 C:\Users\Pichau\source\repos\MyWebAppSolution\MyWebApp\bin\Debug\netcoreapp2.0\refs\Pomelo.EntityFrameworkCore.MySql.dll
 C:\Users\Pichau\source\repos\MyWebAppSolution\MyWebApp\bin\Debug\netcoreapp2.0\refs\Pomelo.JsonObject.dll
 C:\Users\Pichau\source\repos\MyWebAppSolution\MyWebApp\bin\Debug\netcoreapp2.0\refs\System.Memory.dll
+C:\xampp\htdocs\repositores\c-sharp\aspnetcore\apis\bank\obj\Debug\netcoreapp2.0\MyWebApp.csprojAssemblyReference.cache
+C:\xampp\htdocs\repositores\c-sharp\aspnetcore\apis\bank\obj\Debug\netcoreapp2.0\MyWebApp.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\repositores\c-sharp\aspnetcore\apis\bank\obj\Debug\netcoreapp2.0\MyWebApp.AssemblyInfoInputs.cache
+C:\xampp\htdocs\repositores\c-sharp\aspnetcore\apis\bank\obj\Debug\netcoreapp2.0\MyWebApp.AssemblyInfo.cs
+C:\xampp\htdocs\repositores\c-sharp\aspnetcore\apis\bank\obj\Debug\netcoreapp2.0\MyWebApp.dll
+C:\xampp\htdocs\repositores\c-sharp\aspnetcore\apis\bank\obj\Debug\netcoreapp2.0\MyWebApp.pdb
+C:\xampp\htdocs\repositores\c-sharp\aspnetcore\apis\bank\bin\Debug\netcoreapp2.0\MyWebApp.deps.json
+C:\xampp\htdocs\repositores\c-sharp\aspnetcore\apis\bank\bin\Debug\netcoreapp2.0\MyWebApp.runtimeconfig.json
+C:\xampp\htdocs\repositores\c-sharp\aspnetcore\apis\bank\bin\Debug\netcoreapp2.0\MyWebApp.runtimeconfig.dev.json
+C:\xampp\htdocs\repositores\c-sharp\aspnetcore\apis\bank\bin\Debug\netcoreapp2.0\MyWebApp.dll
+C:\xampp\htdocs\repositores\c-sharp\aspnetcore\apis\bank\bin\Debug\netcoreapp2.0\MyWebApp.pdb
