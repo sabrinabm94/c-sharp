@@ -1,5 +1,14 @@
 # Resume
-This project is a api to controll products.
+Api to products control
+
+## Methods variables
+* list all
+
+* list by id
+
+* add new 
+
+* remove 
 
 ---
 
