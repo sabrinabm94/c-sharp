@@ -4,7 +4,7 @@ Apis to control bank accounts, bank actios and users.
 ## Methods variables
 
 ### Acounts /User
-* list all
+* list
 
 * list by id
 
