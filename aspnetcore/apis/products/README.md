@@ -36,5 +36,8 @@ Install-Package Pomelo.EntityFrameworkCore.MySql
 # Migration
 After making changes in the models or the database, perform a new migration using the commands below.
 
-Add Migration your-migration-name
+Add-Migration your-migration-name
+
+Update-Database
+
 
