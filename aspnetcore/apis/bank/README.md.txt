@@ -1,9 +1,49 @@
-This project was building on 3 apis: user api, bank accounts and bank actions like draft, deposit and transfer money.
+# Resume
+Apis to control bank accounts, bank actios and users.
 
-- The api was built with ASP.NET Core.
+## Methods variables
 
-- The database table was created and manipulated using the Entity Framework.
+### Bank acounts
+* list
 
-- The front end was done with ajax in jQuery, html pages and css to a basic stylize.
+* list by id
 
-- The api return data in json format.
+* register
+
+* delete
+
+
+### Bank actions
+* deposit
+
+* transfer
+
+* withdraw
+
+
+### Bank users
+* list
+
+* list by id
+
+* register
+
+* delete
+
+* login
+
+* update
+
+---
+
+# Project architecture
+
+* Framework: ASP.NET Core
+
+* Api data format: json
+
+* Database: MySql
+
+* Database creation and manipulation: Entity Framework
+
+* Front end: html, css and jQuery
