@@ -6,9 +6,11 @@ Api from products control
 
 * list by id
 
-* add new 
+* save
 
-* remove 
+* delete 
+
+* update
 
 ---
 
