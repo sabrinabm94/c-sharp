@@ -7,11 +7,12 @@ Scripts for testing C# features and sintax.
 Scripts using the object-oriented pattern for designing projects.
 
 ## aspnetcore
-Creation of apis rest using ASP.NET CORE.
+Creation of apis and projects using ASP.NET CORE.
 
 ## unity3D
 Games projects using Unity Engine.
 
+---
 
 # contact
 sabrinabgbc
