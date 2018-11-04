@@ -2,7 +2,7 @@
 Api from products control
 
 ## Methods variables
-* list all
+* list
 
 * list by id
 

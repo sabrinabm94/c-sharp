@@ -3,11 +3,11 @@ Mockup api without database manipulation to simulating a users api.
 
 ## Methods variables
 
-* list users
+* list
 
-* list user by id
+* list by id
 
-* register user
+* save
 
 * delete
 
