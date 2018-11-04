@@ -42,4 +42,9 @@ Add-Migration your-migration-name
 
 Update-Database
 
+-- 
+
+# Todo
+* tests
+
 
