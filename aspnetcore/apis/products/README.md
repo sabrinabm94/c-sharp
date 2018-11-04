@@ -29,9 +29,19 @@ Api from products control
 ---
 
 # Instalation
-Install the Entity Framework for MySQL using the comand below in NuGet Console.
+## Entity Framework for MySQL
+Use the code below in NuGet Console
 
 Install-Package Pomelo.EntityFrameworkCore.MySql
+
+## Angular
+Use the codes below with terminal in project root directory
+ng new AngularApp --minimal
+
+npm install --save-dev @angular-devkit/build-angular
+
+ng build
+
 
 ---
 
