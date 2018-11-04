@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WebApplication1.Model;
@@ -7,52 +8,98 @@ using WebApplication1.Model;
 [ApiController]
 public class UserController : ControllerBase
 {
-    [HttpGet("users")]
-    //https://localhost:44396/api/user/users
-    public List<User> GetAllUsers()
+    [HttpGet("list")]
+    //https://localhost:44396/api/user/list
+    public IActionResult list()
     {
-        var users = listUsers();
-        return users;
+        try
+        {
+            return Ok(listUser());
+
+        }
+        catch (Exception error)
+        {
+            return BadRequest("Error: " + error);
+        }
     }
 
-    [HttpGet("{id}")]
-    //https://localhost:44396/api/user/1
-    public User GetUserById(int id)
+    [HttpGet("list/{id}")]
+    //https://localhost:44396/api/user/list/1
+    public IActionResult listById(int id)
     {
-        var users = listUsers();
-        return users.FirstOrDefault(p => p.id == id);
+        try
+        {
+            var users = listUser();
+            return Ok(users.FirstOrDefault(p => p.id == id));
+
+        }
+        catch (Exception error)
+        {
+            return BadRequest("Error: " + error);
+        }
     }
 
-    [HttpPost("register")]
-    //https://localhost:44396/api/user/register
-    public List<User> RegisterUser([FromBody]User user)
+    [HttpPost("save")]
+    //https://localhost:44396/api/user/save
+    public IActionResult save([FromBody]User user)
     {
-        return addUser(user);
+        try
+        {
+            addUser(user);
+            return Ok(user);
+
+        }
+        catch (Exception error)
+        {
+            return BadRequest("Error: " + error);
+        }
     }
 
-    [HttpDelete("delete/{id}")]
-    //https://localhost:44396/api/user/delete/1
-    public List<User> deleteUser(int id)
+    [HttpDelete("delete")]
+    //https://localhost:44396/api/user/delete
+    public IActionResult delete([FromBody]User user)
     {
-        var users = listUsers();
-        var user = users.FirstOrDefault(p => p.id == id);
+        try
+        {
+            var users = listUser();
 
-        users.RemoveAll(p => p.id == id);
+            users.RemoveAll(p => p.id == user.id);
+            return Ok(user);
 
-        return users;
+        }
+        catch (Exception error)
+        {
+            return BadRequest("Error: " + error);
+        }
     }
 
-    [HttpPut("update/{id}")]
-    //https://localhost:44396/api/user/update/1
-    public List<User> updateUser([FromBody] User newUser)
+    [HttpPut("update")]
+    //https://localhost:44396/api/user/update
+    public IActionResult update([FromBody] User newUser)
     {
-        var users = listUsers();
-        var user = users.FirstOrDefault(p => p.id == newUser.id);
-        UpdateUser(user, newUser);
-        return users;
+        try
+        {
+            var users = listUser();
+            var user = users.FirstOrDefault(p => p.id == newUser.id);
+            updateUser(user, newUser);
+
+            if (user != null)
+            {
+                return Ok(newUser);
+            } else
+            {
+                var messages = updateUser(user, newUser);
+                return BadRequest("Error: " + messages);
+            }
+
+        }
+        catch (Exception error)
+        {
+            return BadRequest("Error: " + error);
+        }
     }
 
-    private List<User> getData()
+    private List<User> setUser()
     {
         List<User> users = new List<User>();
         users.Add(new User { id = 1, name = "Sabrina", username = "sabrina", password = "sabrina123", cpf = 00000000000, accountId = 1 });
@@ -61,27 +108,33 @@ public class UserController : ControllerBase
         return users;
     }
 
-    private List<User> listUsers()
+    private List<User> listUser()
     {
-        var users = getData();
-        return users;
+        return setUser();
     }
 
-    private List<User> addUser(User user)
+    private User addUser(User user)
     {
-        var users = listUsers();
+        var users = listUser();
         users.Add(user);
-        return users;
+        return user;
     }
 
-    private User UpdateUser(User user, User newUser)
+    private Object updateUser(User user, User newUser)
     {
-        user.name = newUser.name;
-        user.username = newUser.username;
-        user.password = newUser.password;
-        user.cpf = newUser.cpf;
-        user.accountId = newUser.accountId;
-        
-        return user;
+        if (user != null)
+        {
+            user.name = newUser.name;
+            user.username = newUser.username;
+            user.password = newUser.password;
+            user.cpf = newUser.cpf;
+            user.accountId = newUser.accountId;
+
+            return newUser;
+        } else {
+            var messages = new { error = "Error: user not founded !" };
+
+            return messages;
+        }
     }
 }

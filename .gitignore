@@ -1,0 +1,7 @@
+obj/
+project/
+Debug/
+bin/
+.vs/
+Migrations/
+
