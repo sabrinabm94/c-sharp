@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MinhaCaixa.Models
+﻿namespace MinhaCaixa.Model
 {
     public class CartaoCredito
     {

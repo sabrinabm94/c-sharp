@@ -1,4 +1,4 @@
-﻿namespace MinhaCaixa.Controllers
+﻿namespace MinhaCaixa.Model
 {
     public class Grupo
     {

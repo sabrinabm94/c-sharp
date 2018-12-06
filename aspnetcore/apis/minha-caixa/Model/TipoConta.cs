@@ -1,4 +1,4 @@
-﻿namespace MinhaCaixa.Models
+﻿namespace MinhaCaixa.Model
 {
     public class TipoConta
     {

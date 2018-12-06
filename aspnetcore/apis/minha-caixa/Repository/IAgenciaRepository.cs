@@ -1,9 +1,9 @@
-﻿using System;
+﻿using MinhaCaixa.Model;
 using System.Collections.Generic;
 
 namespace MyWebApp.Repository
 {
-    public interface IAccountRepository
+    public interface IAgenciaRepository
     {
         List<Agencia> list();
         Agencia listById(int id);
