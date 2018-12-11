@@ -44,7 +44,7 @@ namespace MyWebApp.Repository
         {
             _context.Agencias.Remove(agencia);
             _context.SaveChanges();
-            return account;
+            return agencia;
         }
 
         public Agencia update(Agencia agencia)

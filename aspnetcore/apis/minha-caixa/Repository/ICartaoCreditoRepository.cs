@@ -6,10 +6,10 @@ namespace MyWebApp.Repository
     public interface ICartaoCreditoRepository
     {
         List<CartaoCredito> list();
-        Agencia listById(int id);
-        Agencia save(CartaoCredito cartaoCredito);
-        Agencia deleteById(int id);
-        Agencia delete(CartaoCredito cartaoCredito);
-        Agencia update(CartaoCredito cartaoCredito);
+        CartaoCredito listById(int id);
+        CartaoCredito save(CartaoCredito cartaoCredito);
+        CartaoCredito deleteById(int id);
+        CartaoCredito delete(CartaoCredito cartaoCredito);
+        CartaoCredito update(CartaoCredito cartaoCredito);
     }
 }

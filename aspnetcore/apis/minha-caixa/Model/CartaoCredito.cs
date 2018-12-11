@@ -2,6 +2,8 @@
 {
     public class CartaoCredito
     {
+        internal string id;
+
         //public int PK_CartaoCredito { get; set; }
         public int AgenciaCodigo { get; set; }
         public string ContaNumero { get; set; }
