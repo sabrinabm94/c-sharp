@@ -46,7 +46,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                string newCartaoCreditoId = cartaoCredito.id;
+                int newCartaoCreditoId = cartaoCredito.id;
                 var registredCartaoCredito = _cartaoCreditoRepository.listById(newCartaoCreditoId);
 
                 if(registredCartaoCredito == null || registredCartaoCredito.id != newCartaoCreditoId)

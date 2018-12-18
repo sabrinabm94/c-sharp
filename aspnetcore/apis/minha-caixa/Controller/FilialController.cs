@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MinhaCaixa.Model;
 using MyWebApp.Repository;
 using System;
 
@@ -45,7 +46,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                string newFilialId = filial.id;
+                int newFilialId = filial.id;
                 var registeredFilial = _filialRepository.listById(newFilialId);
 
                 if(registeredFilial == null || registeredFilial.id != newFilialId)

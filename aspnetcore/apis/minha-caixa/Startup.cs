@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyWebApp.Model;
 using MyWebApp.Repository;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace MyWebApp
 {
@@ -35,9 +30,14 @@ namespace MyWebApp
 
             services.AddMvc();
 
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IAccountRepository, AccountRepository>();
-            services.AddScoped<IMoneyBillRepository, MoneyBillRepository>();
+            services.AddScoped<IAgenciaRepository, AgenciaRepository>();
+            services.AddScoped<ICartaoCreditoRepository, CartaoCreditoRepository>();
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IContaRepository, ContaRepository>();
+            services.AddScoped<IFilialRepository, FilialRepository>();
+            services.AddScoped<IGrupoRepository, GrupoRepository>();
+            services.AddScoped<IMovimentoRepository, MovimentoRepository>();
+            services.AddScoped<ITipoContaRepository, TipoContaRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

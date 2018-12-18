@@ -5,7 +5,7 @@ namespace MyWebApp.Repository
 {
     public interface ITipoMovimentoRepository
     {
-        List<TipoConta> list();
+        List<TipoMovimento> list();
         TipoMovimento listById(int id);
         TipoMovimento save(TipoMovimento tipoMovimento);
         TipoMovimento deleteById(int id);

@@ -24,7 +24,7 @@ namespace MyWebApp.Repository
             return _context.CartaoCreditos.FirstOrDefault(p => p.id == id);
         }
 
-        public CartaoCredito save(CartaoCreditoRepository cartaoCredito)
+        public CartaoCredito save(CartaoCredito cartaoCredito)
         {
             _context.CartaoCreditos.Add(cartaoCredito);
             _context.SaveChanges();
@@ -34,20 +34,20 @@ namespace MyWebApp.Repository
 
         public CartaoCredito deleteById(int id)
         {
-            var agencia = _context.CartaoCreditos.FirstOrDefault(p => p.id == id);
+            var cartaoCredito = _context.CartaoCreditos.FirstOrDefault(p => p.id == id);
             _context.CartaoCreditos.Remove(cartaoCredito);
             _context.SaveChanges();
             return cartaoCredito;
         }
 
-        public CartaoCredito delete(CartaoCreditoRepository cartaoCredito)
+        public CartaoCredito delete(CartaoCredito cartaoCredito)
         {
             _context.CartaoCreditos.Remove(cartaoCredito);
             _context.SaveChanges();
-            return account;
+            return cartaoCredito;
         }
 
-        public CartaoCredito update(CartaoCreditoRepository cartaoCredito)
+        public CartaoCredito update(CartaoCredito cartaoCredito)
         {
             _context.Update(cartaoCredito);
             _context.SaveChanges();

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MinhaCaixa.Model;
 using MyWebApp.Repository;
 using System;
 
@@ -45,10 +46,10 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                string newGrupoId = grupo.id;
+                int newGrupoId = grupo.GrupoCodigo;
                 var registeredGrupo = _grupoRepository.listById(newGrupoId);
 
-                if(registeredGrupo == null || registeredGrupo.id != newGrupoId)
+                if(registeredGrupo == null || registeredGrupo.GrupoCodigo != newGrupoId)
                 {
                     _grupoRepository.save(grupo);
                     return Created("/api/grupo", grupo);

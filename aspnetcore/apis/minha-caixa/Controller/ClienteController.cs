@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MinhaCaixa.Model;
 using MyWebApp.Repository;
 using System;
 
@@ -45,7 +46,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                string newClienteId = cliente.id;
+                int newClienteId = cliente.id;
                 var registeredCliente = _clienteRepository.listById(newClienteId);
 
                 if(registeredCliente == null || registeredCliente.id != newClienteId)

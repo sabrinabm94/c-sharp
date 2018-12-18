@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MinhaCaixa.Model;
 using MyWebApp.Repository;
 using System;
 
@@ -45,10 +46,10 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                string tipoMovimentoId = grupo.id;
+                int tipoMovimentoId = tipoMovimento.TipoMovimentoCodigo;
                 var registeredTipoMovimento = _TipoMovimentoRepository.listById(tipoMovimentoId);
 
-                if(registeredTipoMovimento == null || registeredTipoMovimento.id != tipoMovimentoId)
+                if(registeredTipoMovimento == null || registeredTipoMovimento.TipoMovimentoCodigo != tipoMovimentoId)
                 {
                     _TipoMovimentoRepository.save(tipoMovimento);
                     return Created("/api/tipoMovimento", tipoMovimento);

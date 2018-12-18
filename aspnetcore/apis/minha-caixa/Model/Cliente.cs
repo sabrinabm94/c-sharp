@@ -1,4 +1,6 @@
-﻿namespace MinhaCaixa.Model
+﻿using System;
+
+namespace MinhaCaixa.Model
 {
     public class Cliente
     {

@@ -2,11 +2,9 @@
 {
     public class Agencia
     {
-        internal string id;
-
+        public int AgenciaCodigo { get; set; } //IDENTITY CONSTRAINT PK_Agencias PRIMARY KEY
         public int GrupoCodigo { get; set; }
         public int FilialCodigo { get; set; } 
-        public int AgenciaCodigo { get; set; } //IDENTITY CONSTRAINT PK_Agencias PRIMARY KEY
         public string AgenciaNome { get; set; }
         public string AgenciaRua { get; set; }
         public int AgenciaNumero { get; set; }

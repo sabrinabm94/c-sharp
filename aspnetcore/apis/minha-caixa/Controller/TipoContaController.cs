@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using MinhaCaixa.Model;
 using MyWebApp.Repository;
 using System;
 
@@ -45,10 +46,10 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                string tipoContaId = grupo.id;
+                int tipoContaId = tipoConta.TipoContaCodigo;
                 var registeredTipoConta = _TipoContaRepository.listById(tipoContaId);
 
-                if(registeredTipoConta == null || registeredTipoConta.id != tipoContaId)
+                if(registeredTipoConta == null || registeredTipoConta.TipoContaCodigo != tipoContaId)
                 {
                     _TipoContaRepository.save(tipoConta);
                     return Created("/api/tipoConta", tipoConta);

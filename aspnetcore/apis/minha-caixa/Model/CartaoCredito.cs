@@ -1,9 +1,10 @@
-﻿namespace MinhaCaixa.Model
+﻿using System;
+
+namespace MinhaCaixa.Model
 {
     public class CartaoCredito
     {
-        internal string id;
-
+        public int cartaoCreditoCodigo { get; set; }
         //public int PK_CartaoCredito { get; set; }
         public int AgenciaCodigo { get; set; }
         public string ContaNumero { get; set; }
