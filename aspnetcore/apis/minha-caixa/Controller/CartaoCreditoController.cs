@@ -46,10 +46,10 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                int newCartaoCreditoId = cartaoCredito.id;
-                var registredCartaoCredito = _cartaoCreditoRepository.listById(newCartaoCreditoId);
+                int newCartaoCreditoId = cartaoCredito.cartaoCreditoCodigo;
+                var registeredCartaoCredito = _cartaoCreditoRepository.listById(newCartaoCreditoId);
 
-                if(registredCartaoCredito == null || registredCartaoCredito.id != newCartaoCreditoId)
+                if(registeredCartaoCredito == null || registeredCartaoCredito.cartaoCreditoCodigo != newCartaoCreditoId)
                 {
                     _cartaoCreditoRepository.save(cartaoCredito);
                     return Created("/api/cartaoCredito", cartaoCredito);

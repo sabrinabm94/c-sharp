@@ -1,7 +1,6 @@
 ﻿using MinhaCaixa.Model;
 using System.Collections.Generic;
 using System.Linq;
-using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace MyWebApp.Repository
 {
@@ -26,7 +25,7 @@ namespace MyWebApp.Repository
 
         public Agencia save(Agencia agencia)
         {
-            _context.Agencias.Add(Agencia);
+            _context.Agencias.Add(agencia);
             _context.SaveChanges();
 
             return Agencia;

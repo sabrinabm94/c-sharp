@@ -96,7 +96,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                _grupoRepository.update(cliente);
+                _grupoRepository.update(grupo);
                 return Created("/api/grupo", grupo);
 
             }

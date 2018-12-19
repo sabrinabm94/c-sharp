@@ -1,7 +1,6 @@
 using MinhaCaixa.Model;
 using System.Collections.Generic;
 using System.Linq;
-using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace MyWebApp.Repository
 {
@@ -44,7 +43,7 @@ namespace MyWebApp.Repository
         {
             _context.Clientes.Remove(cliente);
             _context.SaveChanges();
-            return account;
+            return cliente;
         }
 
         public Cliente update(Cliente cliente)

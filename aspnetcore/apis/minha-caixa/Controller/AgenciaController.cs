@@ -46,10 +46,10 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                string newAgenciaId = agencia.id;
+                int newAgenciaId = agencia.AgenciaCodigo;
                 var registredAgencia = _agenciaRepository.listById(newAgenciaId);
 
-                if(registredAgencia == null || registredAgencia.id != newAgenciaId)
+                if(registredAgencia == null || registredAgencia.AgenciaCodigo != newAgenciaId)
                 {
                     _agenciaRepository.save(agencia);
                     return Created("/api/agencia", agencia);

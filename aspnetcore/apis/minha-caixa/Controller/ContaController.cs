@@ -46,10 +46,10 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                int newContaId = conta.id;
+                int newContaId = conta.ContaCodigo;
                 var registeredConta = _contaRepository.listById(newContaId);
 
-                if(registeredConta == null || registeredConta.id != newContaId)
+                if(registeredConta == null || registeredConta.ContaCodigo != newContaId)
                 {
                     _contaRepository.save(conta);
                     return Created("/api/conta", conta);

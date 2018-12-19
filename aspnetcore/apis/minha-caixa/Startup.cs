@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyWebApp.Repository;
-using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace MyWebApp
 {
@@ -14,6 +13,7 @@ namespace MyWebApp
 
         public Startup(IHostingEnvironment env)
         {
+            //arquivos para build
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
@@ -24,12 +24,14 @@ namespace MyWebApp
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //conexão com o banco de dados
             var sqlConnection = _configuration.GetConnectionString("MyWebAppDb");
-            services.AddDbContext<Context>(options => 
+            services.AddDbContext<Context>(options =>
             options.UseMySql(sqlConnection, b => b.MigrationsAssembly("MyWebApp")));
 
             services.AddMvc();
 
+            //mapeamento de interfaces
             services.AddScoped<IAgenciaRepository, AgenciaRepository>();
             services.AddScoped<ICartaoCreditoRepository, CartaoCreditoRepository>();
             services.AddScoped<IClienteRepository, ClienteRepository>();

@@ -46,10 +46,10 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                int newFilialId = filial.id;
+                int newFilialId = filial.FilialCodigo;
                 var registeredFilial = _filialRepository.listById(newFilialId);
 
-                if(registeredFilial == null || registeredFilial.id != newFilialId)
+                if(registeredFilial == null || registeredFilial.FilialCodigo != newFilialId)
                 {
                     _filialRepository.save(filial);
                     return Created("/api/filial", filial);

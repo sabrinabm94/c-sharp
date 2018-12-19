@@ -46,10 +46,10 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                int newClienteId = cliente.id;
+                int newClienteId = cliente.ClienteCodigo;
                 var registeredCliente = _clienteRepository.listById(newClienteId);
 
-                if(registeredCliente == null || registeredCliente.id != newClienteId)
+                if(registeredCliente == null || registeredCliente.ClienteCodigo != newClienteId)
                 {
                     _clienteRepository.save(cliente);
                     return Created("/api/cliente", cliente);
