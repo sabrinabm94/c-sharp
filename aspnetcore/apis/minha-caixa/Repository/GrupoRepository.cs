@@ -1,4 +1,5 @@
-using MinhaCaixa.Model;
+using Microsoft.EntityFrameworkCore;
+using MyWebApp.Model;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,7 +16,7 @@ namespace MyWebApp.Repository
 
         public List<Grupo> list()
         {
-            return _context.Grupos.ToList();
+            return _context.grupos.ToList();
         }
 
         public Grupo listById(int id)

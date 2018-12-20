@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MinhaCaixa.Model
+namespace MyWebApp.Model
 {
     public class Movimento
     {

@@ -1,4 +1,4 @@
-﻿namespace MinhaCaixa.Model
+﻿namespace MyWebApp.Model
 {
     public class TipoMovimento
     {

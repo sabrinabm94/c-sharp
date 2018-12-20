@@ -1,17 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
-using MinhaCaixa.Model;
+using MyWebApp.Model;
 using MyWebApp.Repository;
 using System;
 
 namespace MyWebApp.Controllers
 {
     [Route("api/[Controller]")]
-    public class CartaoCreditoController: Controller
+    public class TipoMovimentoController: Controller
     {
-        private readonly ICartaoCreditoRepository _cartaoCreditoRepository;
-        public CartaoCreditoController(ICartaoCreditoRepository cartaoCreditoRepository)
+        private readonly ITipoMovimentoRepository _TipoMovimentoRepository;
+        public TipoMovimentoController(ITipoMovimentoRepository tipoMovimentoRepository)
         {
-            _cartaoCreditoRepository = cartaoCreditoRepository;
+            _TipoMovimentoRepository = tipoMovimentoRepository;
         }
 
         [HttpGet("list")]
@@ -19,7 +19,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_cartaoCreditoRepository.list());
+                return Ok(_TipoMovimentoRepository.list());
 
             } catch(Exception error)
             {
@@ -32,7 +32,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_cartaoCreditoRepository.listById(id));
+                return Ok(_TipoMovimentoRepository.listById(id));
 
             }
             catch (Exception error)
@@ -42,17 +42,17 @@ namespace MyWebApp.Controllers
         }
 
         [HttpPost("save")]
-        public IActionResult save([FromBody]CartaoCredito cartaoCredito)
+        public IActionResult save([FromBody]TipoMovimento tipoMovimento)
         {
             try
             {
-                int newCartaoCreditoId = cartaoCredito.cartaoCreditoCodigo;
-                var registeredCartaoCredito = _cartaoCreditoRepository.listById(newCartaoCreditoId);
+                int tipoMovimentoId = tipoMovimento.TipoMovimentoCodigo;
+                var registeredTipoMovimento = _TipoMovimentoRepository.listById(tipoMovimentoId);
 
-                if(registeredCartaoCredito == null || registeredCartaoCredito.cartaoCreditoCodigo != newCartaoCreditoId)
+                if(registeredTipoMovimento == null || registeredTipoMovimento.TipoMovimentoCodigo != tipoMovimentoId)
                 {
-                    _cartaoCreditoRepository.save(cartaoCredito);
-                    return Created("/api/cartaoCredito", cartaoCredito);
+                    _TipoMovimentoRepository.save(tipoMovimento);
+                    return Created("/api/tipoMovimento", tipoMovimento);
                 }
                 return Ok(null);
 
@@ -68,7 +68,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_cartaoCreditoRepository.deleteById(id));
+                return Ok(_TipoMovimentoRepository.deleteById(id));
 
             }
             catch (Exception error)
@@ -78,11 +78,11 @@ namespace MyWebApp.Controllers
         }
 
         [HttpDelete("delete")]
-        public IActionResult delete([FromBody]CartaoCredito cartaoCredito)
+        public IActionResult delete([FromBody]TipoMovimento tipoMovimento)
         {
             try
             {
-                return Ok(_cartaoCreditoRepository.delete(cartaoCredito));
+                return Ok(_TipoMovimentoRepository.delete(tipoMovimento));
 
             }
             catch (Exception error)
@@ -92,12 +92,12 @@ namespace MyWebApp.Controllers
         }
 
         [HttpPut("update")]
-        public IActionResult update([FromBody]CartaoCredito cartaoCredito)
+        public IActionResult update([FromBody]TipoMovimento tipoMovimento)
         {
             try
             {
-                _cartaoCreditoRepository.update(cartaoCredito);
-                return Created("/api/cartaoCredito", cartaoCredito);
+                _TipoMovimentoRepository.update(tipoMovimento);
+                return Created("/api/tipoMovimento", tipoMovimento);
 
             }
             catch (Exception error)

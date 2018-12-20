@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using MinhaCaixa.Model;
+using MyWebApp.Model;
 using MyWebApp.Repository;
 using System;
 

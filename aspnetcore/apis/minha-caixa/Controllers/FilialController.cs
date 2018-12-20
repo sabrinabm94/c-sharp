@@ -1,17 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
-using MinhaCaixa.Model;
+using MyWebApp.Model;
 using MyWebApp.Repository;
 using System;
 
 namespace MyWebApp.Controllers
 {
     [Route("api/[Controller]")]
-    public class TipoContaController: Controller
+    public class FilialController: Controller
     {
-        private readonly ITipoContaRepository _TipoContaRepository;
-        public TipoContaController(ITipoContaRepository tipoContaRepository)
+        private readonly IFilialRepository _filialRepository;
+        public FilialController(IFilialRepository filialRepository)
         {
-            _TipoContaRepository = tipoContaRepository;
+            _filialRepository = filialRepository;
         }
 
         [HttpGet("list")]
@@ -19,7 +19,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_TipoContaRepository.list());
+                return Ok(_filialRepository.list());
 
             } catch(Exception error)
             {
@@ -32,7 +32,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_TipoContaRepository.listById(id));
+                return Ok(_filialRepository.listById(id));
 
             }
             catch (Exception error)
@@ -42,17 +42,17 @@ namespace MyWebApp.Controllers
         }
 
         [HttpPost("save")]
-        public IActionResult save([FromBody]TipoConta tipoConta)
+        public IActionResult save([FromBody]Filial filial)
         {
             try
             {
-                int tipoContaId = tipoConta.TipoContaCodigo;
-                var registeredTipoConta = _TipoContaRepository.listById(tipoContaId);
+                int newFilialId = filial.FilialCodigo;
+                var registeredFilial = _filialRepository.listById(newFilialId);
 
-                if(registeredTipoConta == null || registeredTipoConta.TipoContaCodigo != tipoContaId)
+                if(registeredFilial == null || registeredFilial.FilialCodigo != newFilialId)
                 {
-                    _TipoContaRepository.save(tipoConta);
-                    return Created("/api/tipoConta", tipoConta);
+                    _filialRepository.save(filial);
+                    return Created("/api/filial", filial);
                 }
                 return Ok(null);
 
@@ -68,7 +68,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_TipoContaRepository.deleteById(id));
+                return Ok(_filialRepository.deleteById(id));
 
             }
             catch (Exception error)
@@ -78,11 +78,11 @@ namespace MyWebApp.Controllers
         }
 
         [HttpDelete("delete")]
-        public IActionResult delete([FromBody]TipoConta tipoConta)
+        public IActionResult delete([FromBody]Filial filial)
         {
             try
             {
-                return Ok(_TipoContaRepository.delete(tipoConta));
+                return Ok(_filialRepository.delete(filial));
 
             }
             catch (Exception error)
@@ -92,12 +92,12 @@ namespace MyWebApp.Controllers
         }
 
         [HttpPut("update")]
-        public IActionResult update([FromBody]TipoConta tipoConta)
+        public IActionResult update([FromBody]Filial filial)
         {
             try
             {
-                _TipoContaRepository.update(tipoConta);
-                return Created("/api/tipoConta", tipoConta);
+                _filialRepository.update(filial);
+                return Created("/api/filial", filial);
 
             }
             catch (Exception error)

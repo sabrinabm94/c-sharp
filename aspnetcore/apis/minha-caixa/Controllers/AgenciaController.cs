@@ -1,17 +1,17 @@
-using Microsoft.AspNetCore.Mvc;
-using MinhaCaixa.Model;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyWebApp.Model;
 using MyWebApp.Repository;
 using System;
 
 namespace MyWebApp.Controllers
 {
     [Route("api/[Controller]")]
-    public class ContaController: Controller
+    public class AgenciaController: Controller
     {
-        private readonly IContaRepository _contaRepository;
-        public ContaController(IContaRepository contaRepository)
+        private readonly IAgenciaRepository _agenciaRepository;
+        public AgenciaController(IAgenciaRepository agenciaRepository)
         {
-            _contaRepository = contaRepository;
+            _agenciaRepository = agenciaRepository;
         }
 
         [HttpGet("list")]
@@ -19,7 +19,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_contaRepository.list());
+                return Ok(_agenciaRepository.list());
 
             } catch(Exception error)
             {
@@ -32,7 +32,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_contaRepository.listById(id));
+                return Ok(_agenciaRepository.listById(id));
 
             }
             catch (Exception error)
@@ -42,17 +42,17 @@ namespace MyWebApp.Controllers
         }
 
         [HttpPost("save")]
-        public IActionResult save([FromBody]Conta conta)
+        public IActionResult save([FromBody]Agencia agencia)
         {
             try
             {
-                int newContaId = conta.ContaCodigo;
-                var registeredConta = _contaRepository.listById(newContaId);
+                int newAgenciaId = agencia.AgenciaCodigo;
+                var registredAgencia = _agenciaRepository.listById(newAgenciaId);
 
-                if(registeredConta == null || registeredConta.ContaCodigo != newContaId)
+                if(registredAgencia == null || registredAgencia.AgenciaCodigo != newAgenciaId)
                 {
-                    _contaRepository.save(conta);
-                    return Created("/api/conta", conta);
+                    _agenciaRepository.save(agencia);
+                    return Created("/api/agencia", agencia);
                 }
                 return Ok(null);
 
@@ -68,7 +68,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_contaRepository.deleteById(id));
+                return Ok(_agenciaRepository.deleteById(id));
 
             }
             catch (Exception error)
@@ -78,11 +78,11 @@ namespace MyWebApp.Controllers
         }
 
         [HttpDelete("delete")]
-        public IActionResult delete([FromBody]Conta conta)
+        public IActionResult delete([FromBody]Agencia agencia)
         {
             try
             {
-                return Ok(_contaRepository.delete(conta));
+                return Ok(_agenciaRepository.delete(agencia));
 
             }
             catch (Exception error)
@@ -92,12 +92,12 @@ namespace MyWebApp.Controllers
         }
 
         [HttpPut("update")]
-        public IActionResult update([FromBody]Conta conta)
+        public IActionResult update([FromBody]Agencia agencia)
         {
             try
             {
-                _contaRepository.update(conta);
-                return Created("/api/conta", conta);
+                _agenciaRepository.update(agencia);
+                return Created("/api/agencia", agencia);
 
             }
             catch (Exception error)

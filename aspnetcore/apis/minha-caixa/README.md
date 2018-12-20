@@ -1,28 +1,16 @@
 # Resume
-Apis to control bank accounts, bank actios and users.
+Api from products control
 
 ## Methods variables
-
-### Acounts /User
 * list
 
 * list by id
 
 * save
 
-* delete
+* delete 
 
 * update
-
-* login (users only)
-
-
-### Bank actions
-* deposit
-
-* transfer
-
-* withdraw
 
 ---
 
@@ -36,12 +24,13 @@ Apis to control bank accounts, bank actios and users.
 
 * Database creation and manipulation: Entity Framework
 
-* Front end: html, css and jQuery
+* Front end: not implemented
 
 ---
 
 # Instalation
-Install the Entity Framework for MySQL using the comand below in NuGet Console.
+## Entity Framework for MySQL
+Use the code below in NuGet Console
 
 Install-Package Pomelo.EntityFrameworkCore.MySql
 
@@ -53,3 +42,10 @@ After making changes in the models or the database, perform a new migration usin
 Add-Migration your-migration-name
 
 Update-Database
+
+--- 
+
+# Todo
+* tests
+
+

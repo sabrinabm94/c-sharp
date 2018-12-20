@@ -1,4 +1,4 @@
-﻿using MinhaCaixa.Model;
+﻿using MyWebApp.Model;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,7 +28,7 @@ namespace MyWebApp.Repository
             _context.Agencias.Add(agencia);
             _context.SaveChanges();
 
-            return Agencia;
+            return agencia;
         }
 
         public Agencia deleteById(int id)

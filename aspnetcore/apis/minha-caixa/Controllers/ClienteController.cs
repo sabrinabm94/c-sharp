@@ -1,17 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
-using MinhaCaixa.Model;
+using MyWebApp.Model;
 using MyWebApp.Repository;
 using System;
 
 namespace MyWebApp.Controllers
 {
     [Route("api/[Controller]")]
-    public class TipoMovimentoController: Controller
+    public class ClienteController: Controller
     {
-        private readonly ITipoMovimentoRepository _TipoMovimentoRepository;
-        public TipoMovimentoController(ITipoMovimentoRepository tipoMovimentoRepository)
+        private readonly IClienteRepository _clienteRepository;
+        public ClienteController(IClienteRepository clienteRepository)
         {
-            _TipoMovimentoRepository = tipoMovimentoRepository;
+            _clienteRepository = clienteRepository;
         }
 
         [HttpGet("list")]
@@ -19,7 +19,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_TipoMovimentoRepository.list());
+                return Ok(_clienteRepository.list());
 
             } catch(Exception error)
             {
@@ -32,7 +32,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_TipoMovimentoRepository.listById(id));
+                return Ok(_clienteRepository.listById(id));
 
             }
             catch (Exception error)
@@ -42,17 +42,17 @@ namespace MyWebApp.Controllers
         }
 
         [HttpPost("save")]
-        public IActionResult save([FromBody]TipoMovimento tipoMovimento)
+        public IActionResult save([FromBody]Cliente cliente)
         {
             try
             {
-                int tipoMovimentoId = tipoMovimento.TipoMovimentoCodigo;
-                var registeredTipoMovimento = _TipoMovimentoRepository.listById(tipoMovimentoId);
+                int newClienteId = cliente.ClienteCodigo;
+                var registeredCliente = _clienteRepository.listById(newClienteId);
 
-                if(registeredTipoMovimento == null || registeredTipoMovimento.TipoMovimentoCodigo != tipoMovimentoId)
+                if(registeredCliente == null || registeredCliente.ClienteCodigo != newClienteId)
                 {
-                    _TipoMovimentoRepository.save(tipoMovimento);
-                    return Created("/api/tipoMovimento", tipoMovimento);
+                    _clienteRepository.save(cliente);
+                    return Created("/api/cliente", cliente);
                 }
                 return Ok(null);
 
@@ -68,7 +68,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_TipoMovimentoRepository.deleteById(id));
+                return Ok(_clienteRepository.deleteById(id));
 
             }
             catch (Exception error)
@@ -78,11 +78,11 @@ namespace MyWebApp.Controllers
         }
 
         [HttpDelete("delete")]
-        public IActionResult delete([FromBody]TipoMovimento tipoMovimento)
+        public IActionResult delete([FromBody]Cliente cliente)
         {
             try
             {
-                return Ok(_TipoMovimentoRepository.delete(tipoMovimento));
+                return Ok(_clienteRepository.delete(cliente));
 
             }
             catch (Exception error)
@@ -92,12 +92,12 @@ namespace MyWebApp.Controllers
         }
 
         [HttpPut("update")]
-        public IActionResult update([FromBody]TipoMovimento tipoMovimento)
+        public IActionResult update([FromBody]Cliente cliente)
         {
             try
             {
-                _TipoMovimentoRepository.update(tipoMovimento);
-                return Created("/api/tipoMovimento", tipoMovimento);
+                _clienteRepository.update(cliente);
+                return Created("/api/cliente", cliente);
 
             }
             catch (Exception error)
