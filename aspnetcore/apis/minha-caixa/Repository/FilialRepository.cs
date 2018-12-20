@@ -20,7 +20,7 @@ namespace MyWebApp.Repository
 
         public Filial listById(int id)
         {
-            return _context.filiais.FirstOrDefault(p => p.id == id);
+            return _context.filiais.FirstOrDefault(p => p.FilialCodigo == id);
         }
 
         public Filial save(Filial filial)
@@ -33,7 +33,7 @@ namespace MyWebApp.Repository
 
         public Filial deleteById(int id)
         {
-            var filial = _context.filiais.FirstOrDefault(p => p.id == id);
+            var filial = _context.filiais.FirstOrDefault(p => p.FilialCodigo == id);
             _context.filiais.Remove(filial);
             _context.SaveChanges();
             return filial;

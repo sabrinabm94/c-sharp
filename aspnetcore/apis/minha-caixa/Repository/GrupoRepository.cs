@@ -21,12 +21,12 @@ namespace MyWebApp.Repository
 
         public Grupo listById(int id)
         {
-            return _context.Grupos.FirstOrDefault(p => p.id == id);
+            return _context.grupos.FirstOrDefault(p => p.GrupoCodigo == id);
         }
 
         public Grupo save(Grupo grupo)
         {
-            _context.Grupos.Add(grupo);
+            _context.grupos.Add(grupo);
             _context.SaveChanges();
 
             return grupo;
@@ -34,15 +34,15 @@ namespace MyWebApp.Repository
 
         public Grupo deleteById(int id)
         {
-            var grupo = _context.Grupos.FirstOrDefault(p => p.id == id);
-            _context.Grupos.Remove(grupo);
+            var grupo = _context.grupos.FirstOrDefault(p => p.GrupoCodigo == id);
+            _context.grupos.Remove(grupo);
             _context.SaveChanges();
             return grupo;
         }
 
         public Grupo delete(Grupo grupo)
         {
-            _context.Grupos.Remove(grupo);
+            _context.grupos.Remove(grupo);
             _context.SaveChanges();
             return grupo;
         }

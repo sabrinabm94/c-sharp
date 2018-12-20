@@ -15,17 +15,17 @@ namespace MyWebApp.Repository
 
         public List<Agencia> list()
         {
-            return _context.Agencias.ToList();
+            return _context.agencias.ToList();
         }
 
         public Agencia listById(int id)
         {
-            return _context.Agencias.FirstOrDefault(p => p.id == id);
+            return _context.agencias.FirstOrDefault(p => p.AgenciaCodigo == id);
         }
 
         public Agencia save(Agencia agencia)
         {
-            _context.Agencias.Add(agencia);
+            _context.agencias.Add(agencia);
             _context.SaveChanges();
 
             return agencia;
@@ -33,15 +33,15 @@ namespace MyWebApp.Repository
 
         public Agencia deleteById(int id)
         {
-            var agencia = _context.Agencias.FirstOrDefault(p => p.id == id);
-            _context.Agencias.Remove(agencia);
+            var agencia = _context.agencias.FirstOrDefault(p => p.AgenciaCodigo == id);
+            _context.agencias.Remove(agencia);
             _context.SaveChanges();
             return agencia;
         }
 
         public Agencia delete(Agencia agencia)
         {
-            _context.Agencias.Remove(agencia);
+            _context.agencias.Remove(agencia);
             _context.SaveChanges();
             return agencia;
         }

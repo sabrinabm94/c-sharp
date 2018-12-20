@@ -15,17 +15,17 @@ namespace MyWebApp.Repository
 
         public List<CartaoCredito> list()
         {
-            return _context.CartaoCreditos.ToList();
+            return _context.cartaoCreditos.ToList();
         }
 
         public CartaoCredito listById(int id)
         {
-            return _context.CartaoCreditos.FirstOrDefault(p => p.id == id);
+            return _context.cartaoCreditos.FirstOrDefault(p => p.CartaoCreditoCodigo == id);
         }
 
         public CartaoCredito save(CartaoCredito cartaoCredito)
         {
-            _context.CartaoCreditos.Add(cartaoCredito);
+            _context.cartaoCreditos.Add(cartaoCredito);
             _context.SaveChanges();
 
             return cartaoCredito;
@@ -33,15 +33,15 @@ namespace MyWebApp.Repository
 
         public CartaoCredito deleteById(int id)
         {
-            var cartaoCredito = _context.CartaoCreditos.FirstOrDefault(p => p.id == id);
-            _context.CartaoCreditos.Remove(cartaoCredito);
+            var cartaoCredito = _context.cartaoCreditos.FirstOrDefault(p => p.CartaoCreditoCodigo == id);
+            _context.cartaoCreditos.Remove(cartaoCredito);
             _context.SaveChanges();
             return cartaoCredito;
         }
 
         public CartaoCredito delete(CartaoCredito cartaoCredito)
         {
-            _context.CartaoCreditos.Remove(cartaoCredito);
+            _context.cartaoCreditos.Remove(cartaoCredito);
             _context.SaveChanges();
             return cartaoCredito;
         }

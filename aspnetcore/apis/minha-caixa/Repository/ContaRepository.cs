@@ -15,17 +15,17 @@ namespace MyWebApp.Repository
 
         public List<Conta> list()
         {
-            return _context.Contas.ToList();
+            return _context.contas.ToList();
         }
 
         public Conta listById(int id)
         {
-            return _context.Contas.FirstOrDefault(p => p.id == id);
+            return _context.contas.FirstOrDefault(p => p.ContaCodigo == id);
         }
 
         public Conta save(Conta conta)
         {
-            _context.Contas.Add(conta);
+            _context.contas.Add(conta);
             _context.SaveChanges();
 
             return conta;
@@ -33,15 +33,15 @@ namespace MyWebApp.Repository
 
         public Conta deleteById(int id)
         {
-            var conta = _context.Contas.FirstOrDefault(p => p.id == id);
-            _context.Contas.Remove(conta);
+            var conta = _context.contas.FirstOrDefault(p => p.ContaCodigo == id);
+            _context.contas.Remove(conta);
             _context.SaveChanges();
             return conta;
         }
 
         public Conta delete(Conta conta)
         {
-            _context.Contas.Remove(conta);
+            _context.contas.Remove(conta);
             _context.SaveChanges();
             return conta;
         }

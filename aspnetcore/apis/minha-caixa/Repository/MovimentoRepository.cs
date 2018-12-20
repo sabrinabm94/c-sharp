@@ -15,17 +15,17 @@ namespace MyWebApp.Repository
 
         public List<Movimento> list()
         {
-            return _context.Movimentos.ToList();
+            return _context.movimentos.ToList();
         }
 
         public Movimento listById(int id)
         {
-            return _context.Movimentos.FirstOrDefault(p => p.id == id);
+            return _context.movimentos.FirstOrDefault(p => p.MovimentoCodigo == id);
         }
 
         public Movimento save(Movimento movimento)
         {
-            _context.Movimentos.Add(movimento);
+            _context.movimentos.Add(movimento);
             _context.SaveChanges();
 
             return movimento;
@@ -33,15 +33,15 @@ namespace MyWebApp.Repository
 
         public Movimento deleteById(int id)
         {
-            var movimento = _context.Movimentos.FirstOrDefault(p => p.id == id);
-            _context.Movimentos.Remove(movimento);
+            var movimento = _context.movimentos.FirstOrDefault(p => p.MovimentoCodigo == id);
+            _context.movimentos.Remove(movimento);
             _context.SaveChanges();
             return movimento;
         }
 
         public Movimento delete(Movimento movimento)
         {
-            _context.Movimentos.Remove(movimento);
+            _context.movimentos.Remove(movimento);
             _context.SaveChanges();
             return movimento;
         }

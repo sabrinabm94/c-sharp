@@ -20,7 +20,7 @@ namespace MyWebApp.Repository
 
         public TipoMovimento listById(int id)
         {
-            return _context.tipoMovimentos.FirstOrDefault(p => p.id == id);
+            return _context.tipoMovimentos.FirstOrDefault(p => p.TipoMovimentoCodigo == id);
         }
 
         public TipoMovimento save(TipoMovimento tipoMovimento)
@@ -33,7 +33,7 @@ namespace MyWebApp.Repository
 
         public TipoMovimento deleteById(int id)
         {
-            var tipoMovimento = _context.tipoMovimentos.FirstOrDefault(p => p.id == id);
+            var tipoMovimento = _context.tipoMovimentos.FirstOrDefault(p => p.TipoMovimentoCodigo == id);
             _context.tipoMovimentos.Remove(tipoMovimento);
             _context.SaveChanges();
             return tipoMovimento;

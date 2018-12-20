@@ -20,7 +20,7 @@ namespace MyWebApp.Repository
 
         public TipoConta listById(int id)
         {
-            return _context.tipoContas.FirstOrDefault(p => p.id == id);
+            return _context.tipoContas.FirstOrDefault(p => p.TipoContaCodigo == id);
         }
 
         public TipoConta save(TipoConta tipoConta)
@@ -33,7 +33,7 @@ namespace MyWebApp.Repository
 
         public TipoConta deleteById(int id)
         {
-            var tipoConta = _context.tipoContas.FirstOrDefault(p => p.id == id);
+            var tipoConta = _context.tipoContas.FirstOrDefault(p => p.TipoContaCodigo == id);
             _context.tipoContas.Remove(tipoConta);
             _context.SaveChanges();
             return tipoConta;
