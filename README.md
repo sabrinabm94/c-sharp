@@ -1,4 +1,4 @@
-# Repository structure
+# repository structure
 
 ## basic
 Scripts for testing C# features and sintax.
@@ -14,9 +14,11 @@ Games projects using Unity Engine.
 
 ---
 
-# Contact
+# contacts
 sabrinabgbc
 
-sabrinabgbc@email.com
+sabrinabgbc@email.com | sabrinabmoreira@gmail.com
 
 noobfrontend.wordpress.com
+
+www.linkedin.com/in/sabrinabmoreira
