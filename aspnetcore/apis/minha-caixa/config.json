@@ -1,5 +1,6 @@
 ﻿{
   "ConnectionStrings": {
-    "MyWebAppDb": "Server=127.0.0.1,3306;Initial Catalog=MyWebAppDb;Persist Security Info=False;User ID=root;Password=;Connection Timeout=30;"
+    "MyWebAppDb": "Server=127.0.0.1,3306;Initial Catalog=mybox;Persist Security Info=False;User ID=root;Password=;Connection Timeout=30;"
+    //"MyWebAppDb": "Server=locahost;Database=mybox;Integrated Security=True;"
   }
 }

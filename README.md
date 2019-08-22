@@ -14,9 +14,9 @@ Games projects using Unity Engine.
 
 ---
 
-# Contact
-sabrinabgbc
+# contacts
+Sivy
 
-sabrinabgbc@email.com
+sivyboing@gmail.com
 
-noobfrontend.wordpress.com
+www.thedevblog.com.br

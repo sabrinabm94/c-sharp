@@ -8,10 +8,16 @@ namespace MyWebApp.Controllers
     [Route("api/[Controller]")]
     public class ClienteController: Controller
     {
-        private readonly IClienteRepository _clienteRepository;
-        public ClienteController(IClienteRepository clienteRepository)
+        private readonly IClienteRepository _repository;
+        public ClienteController(IClienteRepository repository)
         {
-            _clienteRepository = clienteRepository;
+            _repository = repository;
+        }
+
+        [HttpGet("teste")]
+        public IActionResult teste()
+        {
+            return Ok(_repository.list());
         }
 
         [HttpGet("list")]
@@ -19,7 +25,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_clienteRepository.list());
+                return Ok(_repository.list());
 
             } catch(Exception error)
             {
@@ -32,7 +38,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_clienteRepository.listById(id));
+                return Ok(_repository.listById(id));
 
             }
             catch (Exception error)
@@ -47,11 +53,11 @@ namespace MyWebApp.Controllers
             try
             {
                 int newClienteId = cliente.ClienteCodigo;
-                var registeredCliente = _clienteRepository.listById(newClienteId);
+                var registeredCliente = _repository.listById(newClienteId);
 
                 if(registeredCliente == null || registeredCliente.ClienteCodigo != newClienteId)
                 {
-                    _clienteRepository.save(cliente);
+                    _repository.save(cliente);
                     return Created("/api/cliente", cliente);
                 }
                 return Ok(null);
@@ -68,7 +74,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_clienteRepository.deleteById(id));
+                return Ok(_repository.deleteById(id));
 
             }
             catch (Exception error)
@@ -82,7 +88,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                return Ok(_clienteRepository.delete(cliente));
+                return Ok(_repository.delete(cliente));
 
             }
             catch (Exception error)
@@ -96,7 +102,7 @@ namespace MyWebApp.Controllers
         {
             try
             {
-                _clienteRepository.update(cliente);
+                _repository.update(cliente);
                 return Created("/api/cliente", cliente);
 
             }

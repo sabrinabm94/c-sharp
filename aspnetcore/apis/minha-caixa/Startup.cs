@@ -31,12 +31,14 @@ namespace MyWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             //conexão com o banco de dados
-            /*var sqlConnection = _configuration.GetConnectionString("MyWebAppDb");
+            var sqlConnection = _configuration.GetConnectionString("MyWebAppDb");
             services.AddDbContext<Context>(options =>
-            options.UseMySql(sqlConnection, b => b.MigrationsAssembly("MyWebApp")));*/
+            options.UseMySql(sqlConnection, b => b.MigrationsAssembly("MyWebApp")));
 
+            /*
             string connection = _configuration.GetConnectionString("MyWebAppDb");
             services.AddDbContext<Context>(options => options.UseSqlServer(connection));
+            */
 
             services.AddMvc();
 
