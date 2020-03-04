@@ -1,22 +1,22 @@
-# repository structure
+# Repository structure
 
-## basic
+## Basic
 Scripts for testing C# features and sintax.
 
-## object-oriented
+## Object-oriented
 Scripts using the object-oriented pattern for designing projects.
 
-## aspnetcore
+## Aspnetcore
 Apis and projects using ASP.NET CORE.
 
-## unity3D
+## Unity3D
 Games projects using Unity Engine.
 
 ---
 
-# contacts
-Sivy
+# Contacts
+Sabrina B.
 
-sivyboing@gmail.com
+sabrinabmoreira@gmail.com
 
-www.thedevblog.com.br
+https://www.thedevblog.com.br/
