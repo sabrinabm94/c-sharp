@@ -14,9 +14,6 @@ Games projects using Unity Engine.
 
 ---
 
-# Contacts
+# Contact
 Sabrina B.
-
-sabrinabmoreira@gmail.com
-
-https://www.thedevblog.com.br/
+sabrinabm94@gmail.com
